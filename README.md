@@ -10,10 +10,18 @@ These biomes will actively converts blocks placed inside them, and convert them 
 
 *(From The Original Defiled Lands Page)*
 
-## Port
+## Features
 
 Most of the original mod's features have been retained, and here are some of the changes made.
 * Defiled Swamps no longer exist.
+
 ---
+
 The following sections are planned for future completion.
 - [ ] Port the original config and make more configurable options.
+
+## Development
+
+l will port this mod to higher minecraft version in the future.
+
+**No backport. No fabric port.**
