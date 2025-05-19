@@ -1,0 +1,70 @@
+{
+  "values": {
+    "minecraft:andesite": {
+      "result": "defiled_lands_reborn:defiled_stone"
+    },
+    "minecraft:coal_block": {
+      "result": "defiled_lands_reborn:hephaestite_block"
+    },
+    "minecraft:coal_ore": {
+      "result": "defiled_lands_reborn:hephaestite_ore"
+    },
+    "minecraft:cracked_stone_bricks": {
+      "result": "defiled_lands_reborn:defiled_cracked_stone_bricks"
+    },
+    "minecraft:deepslate_coal_ore": {
+      "result": "defiled_lands_reborn:hephaestite_ore"
+    },
+    "minecraft:deepslate_diamond_ore": {
+      "result": "defiled_lands_reborn:scarlite_ore"
+    },
+    "minecraft:deepslate_iron_ore": {
+      "result": "defiled_lands_reborn:umbrium_ore"
+    },
+    "minecraft:diamond_block": {
+      "result": "defiled_lands_reborn:scarlite_block"
+    },
+    "minecraft:diamond_ore": {
+      "result": "defiled_lands_reborn:scarlite_ore"
+    },
+    "minecraft:diorite": {
+      "result": "defiled_lands_reborn:defiled_stone"
+    },
+    "minecraft:dirt": {
+      "result": "defiled_lands_reborn:defiled_dirt"
+    },
+    "minecraft:granite": {
+      "result": "defiled_lands_reborn:defiled_stone"
+    },
+    "minecraft:grass_block": {
+      "result": "defiled_lands_reborn:defiled_grass_block"
+    },
+    "minecraft:gravel": {
+      "result": "defiled_lands_reborn:defiled_gravel"
+    },
+    "minecraft:iron_block": {
+      "result": "defiled_lands_reborn:umbrium_block"
+    },
+    "minecraft:iron_ore": {
+      "result": "defiled_lands_reborn:umbrium_ore"
+    },
+    "minecraft:mossy_cobblestone": {
+      "result": "defiled_lands_reborn:defiled_mossy_stone"
+    },
+    "minecraft:mossy_stone_bricks": {
+      "result": "defiled_lands_reborn:defiled_mossy_stone_bricks"
+    },
+    "minecraft:sand": {
+      "result": "defiled_lands_reborn:defiled_sand"
+    },
+    "minecraft:sandstone": {
+      "result": "defiled_lands_reborn:defiled_sandstone"
+    },
+    "minecraft:stone": {
+      "result": "defiled_lands_reborn:defiled_stone"
+    },
+    "minecraft:stone_bricks": {
+      "result": "defiled_lands_reborn:defiled_stone_bricks"
+    }
+  }
+}

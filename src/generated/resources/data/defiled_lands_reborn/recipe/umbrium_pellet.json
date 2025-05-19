@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "S": {
+      "item": "defiled_lands_reborn:defiled_stone"
+    },
+    "U": {
+      "item": "defiled_lands_reborn:umbrium_ingot"
+    }
+  },
+  "pattern": [
+    " S ",
+    "SUS",
+    " S "
+  ],
+  "result": {
+    "count": 1,
+    "id": "defiled_lands_reborn:umbrium_pellet"
+  }
+}

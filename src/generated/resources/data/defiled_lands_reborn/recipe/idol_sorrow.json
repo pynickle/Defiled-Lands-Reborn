@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "R": {
+      "item": "defiled_lands_reborn:ravaging_ingot"
+    },
+    "S": {
+      "item": "defiled_lands_reborn:scarlite"
+    },
+    "U": {
+      "item": "defiled_lands_reborn:umbrium_ingot"
+    }
+  },
+  "pattern": [
+    " R ",
+    "USU",
+    " U "
+  ],
+  "result": {
+    "count": 1,
+    "id": "defiled_lands_reborn:idol_sorrow"
+  }
+}

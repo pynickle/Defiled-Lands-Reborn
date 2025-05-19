@@ -1,0 +1,20 @@
+{
+  "multipart": [
+    {
+      "when": {
+        "topmost": false
+      },
+      "apply": {
+        "model": "defiled_lands_reborn:block/vilespine_part"
+      }
+    },
+    {
+      "when": {
+        "topmost": true
+      },
+      "apply": {
+        "model": "defiled_lands_reborn:block/vilespine_top"
+      }
+    }
+  ]
+}

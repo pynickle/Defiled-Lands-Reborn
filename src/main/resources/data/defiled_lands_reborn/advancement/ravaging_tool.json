@@ -1,0 +1,49 @@
+{
+  "display": {
+    "icon": {
+      "id": "defiled_lands_reborn:the_ravager"
+    },
+    "title": {
+      "translate": "advancements.defiled_lands_reborn.ravaging_tool.title"
+    },
+    "description": {
+      "translate": "advancements.defiled_lands_reborn.ravaging_tool.description"
+    },
+    "frame": "goal"
+  },
+  "parent": "defiled_lands_reborn:summon_destroyer",
+  "criteria": {
+    "ravaging_pickaxe": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": ["defiled_lands_reborn:ravaging_pickaxe"]
+      }
+    },
+    "ravaging_shovel": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": ["defiled_lands_reborn:ravaging_shovel"]
+      }
+    },
+    "ravaging_axe": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": ["defiled_lands_reborn:ravaging_axe"]
+      }
+    },
+    "the_ravager": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": ["defiled_lands_reborn:the_ravager"]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "ravaging_pickaxe",
+      "ravaging_shovel",
+      "ravaging_axe",
+      "the_ravager"
+    ]
+  ]
+}

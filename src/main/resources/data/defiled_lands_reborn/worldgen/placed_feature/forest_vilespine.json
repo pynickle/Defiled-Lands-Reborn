@@ -1,0 +1,12 @@
+{
+  "feature": "defiled_lands_reborn:vilespine",
+  "placement": [
+    {
+      "type": "minecraft:count_on_every_layer",
+      "count": 32
+    },
+    {
+      "type": "minecraft:biome"
+    }
+  ]
+}

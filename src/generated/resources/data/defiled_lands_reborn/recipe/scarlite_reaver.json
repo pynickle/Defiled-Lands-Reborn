@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "#": {
+      "item": "defiled_lands_reborn:umbrium_ingot"
+    },
+    "S": {
+      "item": "defiled_lands_reborn:black_heart"
+    },
+    "X": {
+      "item": "defiled_lands_reborn:scarlite"
+    }
+  },
+  "pattern": [
+    "X  ",
+    "XSX",
+    " # "
+  ],
+  "result": {
+    "count": 1,
+    "id": "defiled_lands_reborn:scarlite_reaver"
+  }
+}

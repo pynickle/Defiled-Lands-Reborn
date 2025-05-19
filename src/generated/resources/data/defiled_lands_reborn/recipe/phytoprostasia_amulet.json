@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "item": "minecraft:string"
+    },
+    "P": {
+      "item": "defiled_lands_reborn:scuttler_eye"
+    },
+    "S": {
+      "item": "defiled_lands_reborn:vilespine"
+    },
+    "X": {
+      "item": "defiled_lands_reborn:umbrium_ingot"
+    }
+  },
+  "pattern": [
+    "###",
+    "X X",
+    "SPS"
+  ],
+  "result": {
+    "count": 1,
+    "id": "defiled_lands_reborn:phytoprostasia_amulet"
+  }
+}

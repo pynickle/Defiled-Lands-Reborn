@@ -1,0 +1,19 @@
+{
+  "anvil_cost": 8,
+  "description": {
+    "translate": "enchantment.defiled_lands_reborn.blazing"
+  },
+  "max_cost": {
+    "base": 50,
+    "per_level_above_first": 0
+  },
+  "max_level": 1,
+  "min_cost": {
+    "base": 20,
+    "per_level_above_first": 0
+  },
+  "primary_items": "#defiled_lands_reborn:blaster_enchantable",
+  "slots": [],
+  "supported_items": "#defiled_lands_reborn:blaster_enchantable",
+  "weight": 1
+}

@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "defiled_lands_reborn:block/tenebra_log_horizontal",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "defiled_lands_reborn:block/tenebra_log"
+    },
+    "axis=z": {
+      "model": "defiled_lands_reborn:block/tenebra_log_horizontal",
+      "x": 90
+    }
+  }
+}

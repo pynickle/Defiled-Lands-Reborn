@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "active=false": {
+      "model": "defiled_lands_reborn:block/conjuring_altar"
+    },
+    "active=true": {
+      "model": "defiled_lands_reborn:block/conjuring_altar_active"
+    }
+  }
+}

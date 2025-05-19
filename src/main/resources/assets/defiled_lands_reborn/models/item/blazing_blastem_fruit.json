@@ -1,0 +1,6 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "defiled_lands_reborn:item/blazing_blastem_fruit"
+  }
+}

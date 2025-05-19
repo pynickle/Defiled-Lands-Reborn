@@ -1,0 +1,9 @@
+{
+  "parent": "block/cube_bottom_top",
+  "textures": {
+    "bottom": "defiled_lands_reborn:block/defiled_dirt",
+    "particle": "defiled_lands_reborn:block/defiled_dirt",
+    "top": "minecraft:block/snow",
+    "side": "defiled_lands_reborn:block/defiled_grass_block_snow"
+  }
+}

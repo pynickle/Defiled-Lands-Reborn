@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "#": {
+      "item": "defiled_lands_reborn:golden_book_wyrm_scale"
+    }
+  },
+  "pattern": [
+    "###",
+    "# #"
+  ],
+  "result": {
+    "count": 1,
+    "id": "defiled_lands_reborn:golden_book_wyrm_scale_helmet"
+  }
+}

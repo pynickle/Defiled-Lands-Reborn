@@ -1,0 +1,19 @@
+{
+  "anvil_cost": 4,
+  "description": {
+    "translate": "enchantment.defiled_lands_reborn.destructive"
+  },
+  "max_cost": {
+    "base": 25,
+    "per_level_above_first": 8
+  },
+  "max_level": 5,
+  "min_cost": {
+    "base": 10,
+    "per_level_above_first": 10
+  },
+  "primary_items": "#defiled_lands_reborn:destructive_available",
+  "slots": [],
+  "supported_items": "#defiled_lands_reborn:destructive_available",
+  "weight": 10
+}

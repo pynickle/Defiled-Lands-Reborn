@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "defiled_lands_reborn:block/defiled_stone_slab"
+    },
+    "type=double": {
+      "model": "defiled_lands_reborn:block/defiled_stone"
+    },
+    "type=top": {
+      "model": "defiled_lands_reborn:block/defiled_stone_slab_top"
+    }
+  }
+}

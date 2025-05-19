@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "item": "defiled_lands_reborn:umbrium_ingot"
+    },
+    "P": {
+      "item": "defiled_lands_reborn:black_heart"
+    },
+    "S": {
+      "item": "defiled_lands_reborn:defiled_stone"
+    },
+    "X": {
+      "item": "defiled_lands_reborn:scarlite"
+    }
+  },
+  "pattern": [
+    "#X#",
+    "SPS"
+  ],
+  "result": {
+    "count": 1,
+    "id": "defiled_lands_reborn:healing_pad"
+  }
+}

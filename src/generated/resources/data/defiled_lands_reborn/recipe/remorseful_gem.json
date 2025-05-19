@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "item": "defiled_lands_reborn:remorseful_essence"
+    },
+    "X": {
+      "item": "defiled_lands_reborn:scarlite"
+    }
+  },
+  "pattern": [
+    " # ",
+    "#X#",
+    " # "
+  ],
+  "result": {
+    "count": 1,
+    "id": "defiled_lands_reborn:remorseful_gem"
+  }
+}

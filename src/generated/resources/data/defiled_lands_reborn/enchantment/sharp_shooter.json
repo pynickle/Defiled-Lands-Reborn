@@ -1,0 +1,19 @@
+{
+  "anvil_cost": 2,
+  "description": {
+    "translate": "enchantment.defiled_lands_reborn.sharp_shooter"
+  },
+  "max_cost": {
+    "base": 25,
+    "per_level_above_first": 8
+  },
+  "max_level": 3,
+  "min_cost": {
+    "base": 5,
+    "per_level_above_first": 9
+  },
+  "primary_items": "#defiled_lands_reborn:gun_enchantable",
+  "slots": [],
+  "supported_items": "#defiled_lands_reborn:gun_enchantable",
+  "weight": 10
+}

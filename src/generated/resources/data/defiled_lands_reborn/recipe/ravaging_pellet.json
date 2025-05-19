@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "R": {
+      "item": "defiled_lands_reborn:ravaging_ingot"
+    },
+    "S": {
+      "item": "defiled_lands_reborn:defiled_stone"
+    }
+  },
+  "pattern": [
+    " S ",
+    "SRS",
+    " S "
+  ],
+  "result": {
+    "count": 1,
+    "id": "defiled_lands_reborn:ravaging_pellet"
+  }
+}

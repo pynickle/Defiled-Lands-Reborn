@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "defiled_lands_reborn:block/tenebra_slab"
+    },
+    "type=double": {
+      "model": "defiled_lands_reborn:block/tenebra_planks"
+    },
+    "type=top": {
+      "model": "defiled_lands_reborn:block/tenebra_slab_top"
+    }
+  }
+}

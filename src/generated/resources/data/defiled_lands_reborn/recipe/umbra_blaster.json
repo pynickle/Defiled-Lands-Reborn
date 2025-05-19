@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "item": "defiled_lands_reborn:umbrium_ingot"
+    },
+    "S": {
+      "item": "defiled_lands_reborn:scuttler_eye"
+    },
+    "X": {
+      "item": "defiled_lands_reborn:umbrium_block"
+    }
+  },
+  "pattern": [
+    "  S",
+    "##X",
+    "  #"
+  ],
+  "result": {
+    "count": 1,
+    "id": "defiled_lands_reborn:umbra_blaster"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "defiled_lands_reborn:block/defiled_stone"
+      },
+      {
+        "model": "defiled_lands_reborn:block/defiled_stone_mirrored"
+      },
+      {
+        "model": "defiled_lands_reborn:block/defiled_stone",
+        "y": 180
+      },
+      {
+        "model": "defiled_lands_reborn:block/defiled_stone_mirrored",
+        "y": 180
+      }
+    ]
+  }
+}

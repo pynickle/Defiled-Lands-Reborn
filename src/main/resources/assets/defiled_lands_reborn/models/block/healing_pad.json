@@ -1,0 +1,8 @@
+{
+  "parent": "block/slab",
+  "textures": {
+    "bottom": "defiled_lands_reborn:block/stone_defiled",
+    "top": "defiled_lands_reborn:block/healing_pad_top",
+    "side": "defiled_lands_reborn:block/healing_pad_side"
+  }
+}

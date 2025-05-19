@@ -1,0 +1,30 @@
+{
+  "display": {
+    "icon": {
+      "id": "defiled_lands_reborn:book_wyrm_analyzer"
+    },
+    "title": {
+      "translate": "advancements.defiled_lands_reborn.book_wyrm_breed_perfect.title"
+    },
+    "description": {
+      "translate": "advancements.defiled_lands_reborn.book_wyrm_breed_perfect.description"
+    },
+    "frame": "challenge",
+    "hidden": true
+  },
+  "parent": "defiled_lands_reborn:book_wyrm_breed_max_level",
+  "rewards": {
+    "experience": 1000
+  },
+  "criteria": {
+    "breed_book_wyrm": {
+      "trigger": "minecraft:bred_animals",
+      "conditions": {
+        "child": {
+          "type": "defiled_lands_reborn:golden_book_wyrm",
+          "nbt": "{DigestingTime:1,EnchantingLevel:30}"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "defiled_lands_reborn:umbrium_ingot"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "id": "defiled_lands_reborn:umbrium_nugget"
+  }
+}

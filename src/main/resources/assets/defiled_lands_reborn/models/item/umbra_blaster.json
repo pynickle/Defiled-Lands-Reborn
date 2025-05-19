@@ -1,0 +1,6 @@
+{
+  "parent": "item/handheld",
+  "textures": {
+    "layer0": "defiled_lands_reborn:item/umbra_blaster"
+  }
+}

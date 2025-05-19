@@ -1,0 +1,26 @@
+{
+  "display": {
+    "icon": {
+      "id": "defiled_lands_reborn:blazing_blastem_fruit"
+    },
+    "title": {
+      "translate": "advancements.defiled_lands_reborn.blazing_blastem_fruit.title"
+    },
+    "description": {
+      "translate": "advancements.defiled_lands_reborn.blazing_blastem_fruit.description"
+    }
+  },
+  "parent": "defiled_lands_reborn:hephaestite_shard",
+  "criteria": {
+    "blazing_blastem_fruit": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "defiled_lands_reborn:blazing_blastem_fruit"
+          }
+        ]
+      }
+    }
+  }
+}

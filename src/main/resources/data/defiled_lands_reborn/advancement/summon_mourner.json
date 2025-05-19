@@ -1,0 +1,24 @@
+{
+  "display": {
+    "icon": {
+      "id": "defiled_lands_reborn:idol_sorrow"
+    },
+    "title": {
+      "translate": "advancements.defiled_lands_reborn.summon_mourner.title"
+    },
+    "description": {
+      "translate": "advancements.defiled_lands_reborn.summon_mourner.description"
+    }
+  },
+  "parent": "defiled_lands_reborn:summon_destroyer",
+  "criteria": {
+    "summoned": {
+      "trigger": "minecraft:summoned_entity",
+      "conditions": {
+        "entity": {
+          "type": "defiled_lands_reborn:the_mourner"
+        }
+      }
+    }
+  }
+}

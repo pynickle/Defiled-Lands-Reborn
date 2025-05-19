@@ -1,0 +1,10 @@
+{
+  "values": {
+    "defiled_lands_reborn:hephaestite_block": {
+      "burn_time": 2000
+    },
+    "defiled_lands_reborn:hephaestite_shard": {
+      "burn_time": 200
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab",
+  "textures": {
+    "bottom": "defiled_lands_reborn:block/defiled_stone",
+    "side": "defiled_lands_reborn:block/defiled_stone",
+    "top": "defiled_lands_reborn:block/defiled_stone"
+  }
+}

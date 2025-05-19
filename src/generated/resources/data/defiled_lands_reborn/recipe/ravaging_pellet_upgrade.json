@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "defiled_lands_reborn:ravaging_essence"
+    },
+    {
+      "item": "defiled_lands_reborn:umbrium_pellet"
+    },
+    {
+      "item": "defiled_lands_reborn:umbrium_pellet"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "defiled_lands_reborn:ravaging_pellet"
+  }
+}

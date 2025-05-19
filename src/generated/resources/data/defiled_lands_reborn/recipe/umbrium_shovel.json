@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "#": {
+      "item": "defiled_lands_reborn:umbrium_ingot"
+    },
+    "S": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    "#",
+    "S",
+    "S"
+  ],
+  "result": {
+    "count": 1,
+    "id": "defiled_lands_reborn:umbrium_shovel"
+  }
+}

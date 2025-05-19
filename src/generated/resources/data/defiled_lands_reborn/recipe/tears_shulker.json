@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "M": {
+      "item": "minecraft:shulker_shell"
+    },
+    "R": {
+      "item": "defiled_lands_reborn:remorseful_gem"
+    },
+    "U": {
+      "item": "defiled_lands_reborn:umbrium_ingot"
+    }
+  },
+  "pattern": [
+    "MRM",
+    " U ",
+    " U "
+  ],
+  "result": {
+    "count": 1,
+    "id": "defiled_lands_reborn:tears_shulker"
+  }
+}

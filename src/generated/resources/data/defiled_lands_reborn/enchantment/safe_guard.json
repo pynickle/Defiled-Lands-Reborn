@@ -1,0 +1,19 @@
+{
+  "anvil_cost": 2,
+  "description": {
+    "translate": "enchantment.defiled_lands_reborn.safe_guard"
+  },
+  "max_cost": {
+    "base": 20,
+    "per_level_above_first": 9
+  },
+  "max_level": 1,
+  "min_cost": {
+    "base": 5,
+    "per_level_above_first": 9
+  },
+  "primary_items": "#defiled_lands_reborn:blaster_enchantable",
+  "slots": [],
+  "supported_items": "#defiled_lands_reborn:blaster_enchantable",
+  "weight": 10
+}

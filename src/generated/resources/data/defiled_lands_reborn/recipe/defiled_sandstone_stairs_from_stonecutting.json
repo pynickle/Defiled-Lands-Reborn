@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "defiled_lands_reborn:defiled_sandstone"
+  },
+  "result": {
+    "count": 1,
+    "id": "defiled_lands_reborn:defiled_sandstone_stairs"
+  }
+}
