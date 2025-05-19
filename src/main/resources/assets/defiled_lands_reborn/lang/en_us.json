@@ -1,5 +1,6 @@
 {
   "itemGroup.tabDefiledLands": "Defiled Lands Reborn",
+
   "block.defiled_lands_reborn.defiled_stone": "Defiled Stone",
   "block.defiled_lands_reborn.defiled_sandstone": "Defiled Sandstone",
   "block.defiled_lands_reborn.defiled_sand": "Defiled Sand",
@@ -150,9 +151,6 @@
   "effect.defiled_lands_reborn.vulnerability": "Vulnerability",
   "effect.defiled_lands_reborn.grounded": "Grounded",
   "effect.defiled_lands_reborn.bleeding": "Bleeding",
-
-  "fluid.umbrium": "Molten Umbrium",
-  "block.defiled_lands_reborn.molten_umbrium": "Molten Umbrium",
 
   "ui.defiled_lands_reborn.book_wyrm_analyze.health": "Health : %s/%s",
   "ui.defiled_lands_reborn.book_wyrm_analyze.digest_time": "Digesting time : %s",
