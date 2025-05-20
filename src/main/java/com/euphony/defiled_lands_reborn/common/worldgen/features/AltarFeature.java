@@ -21,12 +21,6 @@ public class AltarFeature extends Feature<NoneFeatureConfiguration> {
         BlockPos pos = featurePlaceContext.origin();
         for(int i = -2; i <= 2; i++) {
             for(int j = -2; j <= 2; j++) {
-                for(int k = -1; k <= 1; k++) {
-                    BlockPos blockPos = pos.offset(i, k, j);
-                    if (!level.isEmptyBlock(blockPos)) {
-                        return false;
-                    }
-                }
                 BlockPos blockPos = pos.offset(i, 1, j);
                 if (!level.isEmptyBlock(blockPos)) {
                     return false;

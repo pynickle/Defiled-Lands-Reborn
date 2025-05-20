@@ -27,6 +27,7 @@ import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.animal.Animal;
+import net.minecraft.world.entity.animal.Sheep;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -57,7 +58,7 @@ public class BookWyrm extends Animal {
         goalSelector.addGoal(0, new FloatGoal(this));
         goalSelector.addGoal(1, new PanicGoal(this, 1.3));
         goalSelector.addGoal(2, new BreedGoal(this, 1));
-        goalSelector.addGoal(3, new TemptGoal(this, 1.2, Ingredient.of(Items.BOOK, Items.ENCHANTED_BOOK), false));
+        goalSelector.addGoal(3, new TemptGoal(this, 1.2, Ingredient.of(DLItems.FOUL_CANDY, Items.ENCHANTED_BOOK), false));
         goalSelector.addGoal(4, new FollowParentGoal(this, 1.2));
         goalSelector.addGoal(5, new WaterAvoidingRandomStrollGoal(this, 1));
         goalSelector.addGoal(6, new LookAtPlayerGoal(this, Player.class, 6f));
