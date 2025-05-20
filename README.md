@@ -20,8 +20,17 @@ Most of the original mod's features have been retained, and here are some of the
 The following sections are planned for future completion.
 - [ ] Port the original config and make more configurable options.
 
+## Capability
+
+* JEI category for corruption recipe.
+* Enchantment description mod compat with all enchantments in this mod.
+
 ## Development
 
 l will port this mod to higher minecraft version in the future.
 
 **No backport. No fabric port.**
+
+## Issue
+
+If you find any bugs, please report them on the [issue tracker](https://github.com/pynickle/Defiled-Lands-Reborn/issues).

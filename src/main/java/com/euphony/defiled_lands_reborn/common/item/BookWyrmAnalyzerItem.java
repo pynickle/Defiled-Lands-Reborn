@@ -27,7 +27,7 @@ public class BookWyrmAnalyzerItem extends Item {
             BookWyrm target = (BookWyrm) entity;
 
             String base = "ui.defiled_lands_reborn.book_wyrm_analyze.";
-            player.sendSystemMessage(Component.translatable(base + "health", target.getHealth()));
+            player.sendSystemMessage(Component.translatable(base + "health", target.getHealth(), target.getMaxHealth()));
             player.sendSystemMessage(Component.translatable(base + "digest_time", target.getDigestingTime()));
             player.sendSystemMessage(Component.translatable(base + "max_level", target.getEnchLevel()));
             player.sendSystemMessage(Component.translatable(base + "digested", target.getDigested()));

@@ -125,7 +125,7 @@
   "enchantment.blazing": "Blazing",
   "enchantment.defiled_lands_reborn.destructive.desc": "Increases explosion size and direct impact damage",
   "enchantment.defiled_lands_reborn.safeguard.desc": "Prevents explosions from destroying blocks",
-  "enchantment.defiled_lands_reborn.sharpshooter.desc": "Increases projecblock speed and range, and reduces inaccuracy",
+  "enchantment.defiled_lands_reborn.sharpshooter.desc": "Increases projectile speed and range, and reduces inaccuracy",
   "enchantment.defiled_lands_reborn.economical.desc": "Gives a chance for your weapon to not consume ammo when used",
   "enchantment.defiled_lands_reborn.blazing.desc": "Converts fired blastem fruit into blazing variants",
 
@@ -162,7 +162,6 @@
   "ui.defiled_lands_reborn.book_wyrm_analyze.ready": "Ready to mate",
   "ui.defiled_lands_reborn.book_wyrm_analyze.golden": "This specimen has a strange golden hide...",
   "ui.defiled_lands_reborn.pellet.damage": "Damage",
-  "ui.defiled_lands_reborn.jei.defilement": "Defilement",
 
   "advancements.defiled_lands_reborn.root.title": "Defiled Lands",
   "advancements.defiled_lands_reborn.root.description": "A horrible chill runs down your spine...",
