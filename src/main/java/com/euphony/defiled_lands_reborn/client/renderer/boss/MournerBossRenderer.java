@@ -1,8 +1,6 @@
 package com.euphony.defiled_lands_reborn.client.renderer.boss;
 
-import com.euphony.defiled_lands_reborn.client.model.DestroyerModel;
 import com.euphony.defiled_lands_reborn.client.model.MournerModel;
-import com.euphony.defiled_lands_reborn.common.entity.boss.DestroyerBoss;
 import com.euphony.defiled_lands_reborn.common.entity.boss.MournerBoss;
 import com.euphony.defiled_lands_reborn.utils.Utils;
 import com.mojang.blaze3d.vertex.PoseStack;

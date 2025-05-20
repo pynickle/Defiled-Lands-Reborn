@@ -176,9 +176,12 @@ public class MournerBoss extends Monster {
                         pos.setY(pos.getY() - 1);
                     }
 
+                    ((ServerLevel) level).setWeatherParameters(0, ServerLevel.THUNDER_DURATION.sample(level.random), true, true);
                     LightningBolt lightningBolt = new LightningBolt(EntityType.LIGHTNING_BOLT, level);
-                    lightningBolt.setPos(pos.getX(), getY() + 1, pos.getZ());
-                    level.addFreshEntity(new LightningBolt(EntityType.LIGHTNING_BOLT, level));
+                    lightningBolt.setPos(pos.getX(), pos.getY() + 1, pos.getZ());
+                    lightningBolt.setVisualOnly(true);
+
+                    level.addFreshEntity(lightningBolt);
                 }
             }
         }
