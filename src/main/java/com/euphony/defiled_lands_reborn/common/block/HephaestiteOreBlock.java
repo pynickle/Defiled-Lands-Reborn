@@ -1,8 +1,11 @@
 package com.euphony.defiled_lands_reborn.common.block;
 
+import com.euphony.defiled_lands_reborn.utils.CorruptionUtils;
 import com.euphony.defiled_lands_reborn.utils.ItemUtils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.util.RandomSource;
 import net.minecraft.util.valueproviders.IntProvider;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
@@ -19,7 +22,7 @@ import java.util.List;
 
 public class HephaestiteOreBlock extends DropExperienceBlock {
     public HephaestiteOreBlock(IntProvider xpRange, Properties properties) {
-        super(xpRange, properties);
+        super(xpRange, properties.randomTicks());
     }
 
     @Override
@@ -31,6 +34,11 @@ public class HephaestiteOreBlock extends DropExperienceBlock {
         }
 
         super.stepOn(level, pos, state, entity);
+    }
+
+    @Override
+    protected void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
+        CorruptionUtils.spread(level, pos, state, random);
     }
 
     @Override

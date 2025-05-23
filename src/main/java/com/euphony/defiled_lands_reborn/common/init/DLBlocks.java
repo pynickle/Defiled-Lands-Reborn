@@ -31,7 +31,7 @@ public class DLBlocks {
 
     public static final DeferredBlock<CorruptedLogBlock> TENEBRA_LOG = registerWithItem("tenebra_log", CorruptedLogBlock::new,
             BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LOG));
-    public static final DeferredBlock<LeavesBlock> TENEBRA_LEAVES = registerWithItem("tenebra_leaves", LeavesBlock::new,
+    public static final DeferredBlock<CorruptedLeavesBlock> TENEBRA_LEAVES = registerWithItem("tenebra_leaves", CorruptedLeavesBlock::new,
             BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LEAVES));
     public static final DeferredBlock<TenebraSaplingBlock> TENEBRA_SAPLING = registerWithItem("tenebra_sapling", (p) -> new TenebraSaplingBlock(DLTreeGrowers.TENEBRA, p),
             BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SAPLING));
@@ -46,7 +46,7 @@ public class DLBlocks {
             BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_ORE));
     public static final DeferredBlock<CorruptedBlock> UMBRIUM_BLOCK = registerWithItem("umbrium_block", CorruptedBlock::new,
             BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_BLOCK));
-    public static final DeferredBlock<Block> SCARLITE_ORE = registerWithItem("scarlite_ore", Block::new,
+    public static final DeferredBlock<CorruptedBlock> SCARLITE_ORE = registerWithItem("scarlite_ore", CorruptedBlock::new,
             BlockBehaviour.Properties.ofFullCopy(Blocks.DIAMOND_ORE));
     public static final DeferredBlock<CorruptedBlock> SCARLITE_BLOCK = registerWithItem("scarlite_block", CorruptedBlock::new,
             BlockBehaviour.Properties.ofFullCopy(Blocks.DIAMOND_BLOCK));
@@ -63,13 +63,13 @@ public class DLBlocks {
     public static final DeferredBlock<ConjuringAltarBlock> CONJURING_ALTAR = registerWithItem("conjuring_altar", ConjuringAltarBlock::new,
             BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SLAB));
 
-    public static final DeferredBlock<Block> DEFILED_STONE_BRICKS = registerWithItem("defiled_stone_bricks", Block::new,
+    public static final DeferredBlock<CorruptedBlock> DEFILED_STONE_BRICKS = registerWithItem("defiled_stone_bricks", CorruptedBlock::new,
             BlockBehaviour.Properties.ofFullCopy(Blocks.STONE_BRICKS));
-    public static final DeferredBlock<Block> DEFILED_CRACKED_STONE_BRICKS = registerWithItem("defiled_cracked_stone_bricks", Block::new,
+    public static final DeferredBlock<CorruptedBlock> DEFILED_CRACKED_STONE_BRICKS = registerWithItem("defiled_cracked_stone_bricks", CorruptedBlock::new,
             BlockBehaviour.Properties.ofFullCopy(Blocks.CRACKED_STONE_BRICKS));
-    public static final DeferredBlock<Block> DEFILED_MOSSY_STONE_BRICKS = registerWithItem("defiled_mossy_stone_bricks", Block::new,
+    public static final DeferredBlock<CorruptedBlock> DEFILED_MOSSY_STONE_BRICKS = registerWithItem("defiled_mossy_stone_bricks", CorruptedBlock::new,
             BlockBehaviour.Properties.ofFullCopy(Blocks.MOSSY_STONE_BRICKS));
-    public static final DeferredBlock<Block> DEFILED_MOSSY_STONE = registerWithItem("defiled_mossy_stone", Block::new,
+    public static final DeferredBlock<CorruptedBlock> DEFILED_MOSSY_STONE = registerWithItem("defiled_mossy_stone", CorruptedBlock::new,
             BlockBehaviour.Properties.ofFullCopy(Blocks.MOSSY_COBBLESTONE));
 
     public static final DeferredBlock<SlabBlock> DEFILED_STONE_SLAB = registerWithItem("defiled_stone_slab", SlabBlock::new,
@@ -93,9 +93,9 @@ public class DLBlocks {
     public static final DeferredBlock<DoorBlock> TENEBRA_DOOR = registerWithItem("tenebra_door", p -> new DoorBlock(new BlockSetType("tenebra"), p),
             BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_DOOR));
 
-    public static final DeferredBlock<Block> RAVAGING_STONE = registerWithItem("ravaging_stone", Block::new,
+    public static final DeferredBlock<CorruptedBlock> RAVAGING_STONE = registerWithItem("ravaging_stone", CorruptedBlock::new,
             BlockBehaviour.Properties.ofFullCopy(Blocks.STONE));
-    public static final DeferredBlock<Block> RAVAGING_BRICKS = registerWithItem("ravaging_bricks", Block::new,
+    public static final DeferredBlock<CorruptedBlock> RAVAGING_BRICKS = registerWithItem("ravaging_bricks", CorruptedBlock::new,
             BlockBehaviour.Properties.ofFullCopy(Blocks.BRICKS));
 
     public static <T extends Block> DeferredBlock<T> register(String name, Function<BlockBehaviour.Properties, T> function, BlockBehaviour.Properties properties) {
