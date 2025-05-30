@@ -1,6 +1,7 @@
 package com.euphony.defiled_lands_reborn.common.entity;
 
 import com.euphony.defiled_lands_reborn.common.init.DLEntities;
+import com.euphony.defiled_lands_reborn.config.ConfigHelper;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.AgeableMob;
@@ -25,11 +26,11 @@ public class GoldenBookWyrm extends BookWyrm {
 
     @Override
     public boolean isGolden(AgeableMob mate) {
-        int i = 25;
+        double i = ConfigHelper.common().entity.goldenBookWyrmProbabilityForOneGolden.get();
         if (mate instanceof GoldenBookWyrm) {
-            i = 10;
+            i = ConfigHelper.common().entity.goldenBookWyrmProbabilityForTwoGolden.get();
         }
-        if (random.nextInt(i) == 0) {
+        if (random.nextDouble() <= i) {
             return true;
         }
         return false;

@@ -3,6 +3,7 @@ package com.euphony.defiled_lands_reborn.common.entity;
 import com.euphony.defiled_lands_reborn.common.init.DLEntities;
 import com.euphony.defiled_lands_reborn.common.init.DLItems;
 import com.euphony.defiled_lands_reborn.common.init.DLSounds;
+import com.euphony.defiled_lands_reborn.config.ConfigHelper;
 import it.unimi.dsi.fastutil.objects.Object2IntMap;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
@@ -159,7 +160,7 @@ public class BookWyrm extends Animal {
     public static void mixGenes(BookWyrm a, BookWyrm b, BookWyrm child, RandomSource rand) {
         int maxLevel = Math.max(a.enchLevel, b.enchLevel);
         int level = a.enchLevel + b.enchLevel + rand.nextInt(maxLevel + 1);
-        child.enchLevel = Math.min(level / 2, 30);
+        child.enchLevel = Math.min(level / 2, ConfigHelper.common().entity.bookWyrmMaxEnchantingLevel.get());
 
         int maxTime = Math.max(a.digestingTime, b.digestingTime);
         int k = a.digestingTime + b.digestingTime - rand.nextInt((int)(maxTime + 0.75));
@@ -221,11 +222,11 @@ public class BookWyrm extends Animal {
     }
 
     public boolean isGolden(AgeableMob mate) {
-        int i = 100;
+        double i = ConfigHelper.common().entity.goldenBookWyrmProbabilityForZeroGolden.get();
         if (mate instanceof GoldenBookWyrm) {
-            i = 25;
+            i = ConfigHelper.common().entity.goldenBookWyrmProbabilityForOneGolden.get();
         }
-        if (random.nextInt(i) == 0) {
+        if (random.nextDouble() <= i) {
             return true;
         }
         return false;

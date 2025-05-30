@@ -18,17 +18,5 @@ public class ConfigHolder {
         configCommonSpec = spec2.getRight();
 
         container.registerConfig(ModConfig.Type.COMMON, ConfigHolder.configCommonSpec);
-
-        modBus.addListener(ConfigHolder::onConfigChanged);
-    }
-
-    private static void onConfigChanged(final ModConfigEvent event) {
-        ModConfig config = event.getConfig();
-        if (config.getSpec() == ConfigHolder.configCommonSpec) {
-            refreshCommon();
-        }
-    }
-
-    static void refreshCommon() {
     }
 }
