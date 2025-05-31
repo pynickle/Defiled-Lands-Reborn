@@ -2,15 +2,9 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "H": {
-      "item": "defiled_lands_reborn:black_heart"
-    },
-    "S": {
-      "item": "defiled_lands_reborn:scarlite"
-    },
-    "T": {
-      "item": "defiled_lands_reborn:defiled_stone"
-    }
+    "H": "defiled_lands_reborn:black_heart",
+    "S": "defiled_lands_reborn:scarlite",
+    "T": "defiled_lands_reborn:defiled_stone"
   },
   "pattern": [
     "TST",

@@ -5,12 +5,13 @@ import net.minecraft.client.model.EndermanModel;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.RenderLayerParent;
 import net.minecraft.client.renderer.entity.layers.EyesLayer;
+import net.minecraft.client.renderer.entity.state.EndermanRenderState;
 import net.minecraft.world.entity.LivingEntity;
 
-public class TwistedShamblerEyesLayer<T extends LivingEntity> extends EyesLayer<T, EndermanModel<T>> {
+public class TwistedShamblerEyesLayer extends EyesLayer<EndermanRenderState, EndermanModel<EndermanRenderState>> {
     private static final RenderType TWISTED_SHAMBLER_EYES = RenderType.eyes(Utils.prefix("textures/entity/twisted_shambler_eyes.png"));
 
-    public TwistedShamblerEyesLayer(RenderLayerParent<T, EndermanModel<T>> p_116964_) {
+    public TwistedShamblerEyesLayer(RenderLayerParent<EndermanRenderState, EndermanModel<EndermanRenderState>> p_116964_) {
         super(p_116964_);
     }
 

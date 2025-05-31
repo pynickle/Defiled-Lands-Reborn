@@ -12,7 +12,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.ItemInteractionResult;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
@@ -66,7 +66,7 @@ public class ConjuringAltarBlock extends Block implements EntityBlock {
     }
 
     @Override
-    protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
+    protected InteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
         Block block = state.getBlock();
         if (state.getValue(ACTIVE) && level.getDifficulty() != Difficulty.PEACEFUL) {
             if (!level.isClientSide) {
@@ -82,7 +82,7 @@ public class ConjuringAltarBlock extends Block implements EntityBlock {
                     level.addFreshEntity(mourner);
 
                     stack.consume(1, player);
-                    return ItemInteractionResult.SUCCESS;
+                    return InteractionResult.SUCCESS;
                 } else if(stack.is(DLItems.CALLING_STONE)) {
                     DestroyerBoss destroyer = new DestroyerBoss(DLEntities.DESTROYER.get(), level);
                     destroyer.setPos(pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5);
@@ -95,12 +95,12 @@ public class ConjuringAltarBlock extends Block implements EntityBlock {
                     level.addFreshEntity(destroyer);
 
                     stack.consume(1, player);
-                    return ItemInteractionResult.SUCCESS;
+                    return InteractionResult.SUCCESS;
                 }
             }
 
         }
-        return ItemInteractionResult.CONSUME;
+        return InteractionResult.CONSUME;
     }
 
     @SuppressWarnings("unchecked")

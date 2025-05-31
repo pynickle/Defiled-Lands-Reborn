@@ -33,14 +33,14 @@ public class BlastemFruitProjectile extends ThrowableItemProjectile implements I
     protected float damage, explosion;
 
     public BlastemFruitProjectile(Level level, LivingEntity thrower) {
-        super(DLEntities.BLASTEM_FRUIT_PROJECTILE.get(), thrower, level);
+        super(DLEntities.BLASTEM_FRUIT_PROJECTILE.get(), thrower, level, DLItems.BLASTEM_FRUIT.toStack());
         damage = 7.0F;
         explosion = 1.0F;
         destructive = true;
     }
 
     public BlastemFruitProjectile(EntityType<? extends BlastemFruitProjectile> entityType, Level level, LivingEntity thrower) {
-        super(entityType, thrower, level);
+        super(entityType, thrower, level, DLItems.BLASTEM_FRUIT.toStack());
         damage = 7.0F;
         explosion = 1.0F;
         destructive = true;
@@ -96,8 +96,8 @@ public class BlastemFruitProjectile extends ThrowableItemProjectile implements I
     @Override
     public void readAdditionalSaveData(CompoundTag compound) {
         super.readAdditionalSaveData(compound);
-        this.damage = compound.getFloat("Damage");
-        this.explosion = compound.getFloat("Explosion");
-        this.destructive = compound.getBoolean("Destructive");
+        this.damage = compound.getFloat("Damage").get();
+        this.explosion = compound.getFloat("Explosion").get();
+        this.destructive = compound.getBoolean("Destructive").get();
     }
 }

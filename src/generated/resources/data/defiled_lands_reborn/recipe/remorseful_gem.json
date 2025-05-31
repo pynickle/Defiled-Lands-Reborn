@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "#": {
-      "item": "defiled_lands_reborn:remorseful_essence"
-    },
-    "X": {
-      "item": "defiled_lands_reborn:scarlite"
-    }
+    "#": "defiled_lands_reborn:remorseful_essence",
+    "X": "defiled_lands_reborn:scarlite"
   },
   "pattern": [
     " # ",

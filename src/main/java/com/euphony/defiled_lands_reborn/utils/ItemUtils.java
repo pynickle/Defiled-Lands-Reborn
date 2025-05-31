@@ -8,8 +8,13 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantment;
 
 import java.util.List;
+import java.util.function.Consumer;
 
 public class ItemUtils {
+    public static void addTooltip(Consumer<Component> components, String key) {
+        components.accept(Component.translatable(key).withStyle(ChatFormatting.GRAY));
+    }
+
     public static void addTooltip(List<Component> components, String key) {
         components.add(Component.translatable(key).withStyle(ChatFormatting.GRAY));
     }

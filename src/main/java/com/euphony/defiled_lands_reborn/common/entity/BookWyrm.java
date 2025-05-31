@@ -100,7 +100,7 @@ public class BookWyrm extends Animal {
 
             stack.consume(1, player);
 
-            playSound(SoundEvents.GENERIC_EAT, 1, 1);
+            playSound(SoundEvents.GENERIC_EAT.value(), 1, 1);
             return InteractionResult.SUCCESS;
         }
         return super.mobInteract(player, hand);
@@ -111,15 +111,15 @@ public class BookWyrm extends Animal {
         List<EnchantmentInstance> enchantmentInstances = getPossibleEnchantments();
         stack = new ItemStack(Items.ENCHANTED_BOOK);
         for (EnchantmentInstance e : enchantmentInstances) {
-            stack.enchant(e.enchantment, e.level);
+            stack.enchant(e.enchantment(), e.level());
         }
         playSound(DLSounds.wyrmBook.get(), 1, 1);
-        spawnAtLocation(stack);
+        spawnAtLocation((ServerLevel) level(), stack);
     }
 
     public List<EnchantmentInstance> getPossibleEnchantments() {
-        List<EnchantmentInstance> enchantmentInstances = EnchantmentHelper.selectEnchantment(random, Items.BOOK.getDefaultInstance(), enchLevel, level().registryAccess().registryOrThrow(Registries.ENCHANTMENT).holders().map(IHolderExtension::getDelegate));
-        enchantmentInstances.removeIf(enchantmentInstance -> enchantmentInstance.enchantment.tags().noneMatch(p -> p.isFor(EnchantmentTags.IN_ENCHANTING_TABLE.registry())));
+        List<EnchantmentInstance> enchantmentInstances = EnchantmentHelper.selectEnchantment(random, Items.BOOK.getDefaultInstance(), enchLevel, level().registryAccess().lookupOrThrow(Registries.ENCHANTMENT).stream().map(a -> a.exclusiveSet().get(0)).map(IHolderExtension::getDelegate));
+        enchantmentInstances.removeIf(enchantmentInstance -> enchantmentInstance.enchantment().tags().noneMatch(p -> p.isFor(EnchantmentTags.IN_ENCHANTING_TABLE.registry())));
         return enchantmentInstances;
     }
 
@@ -134,9 +134,9 @@ public class BookWyrm extends Animal {
     }
 
     @Override
-    public @NotNull SpawnGroupData finalizeSpawn(ServerLevelAccessor level, DifficultyInstance difficulty, MobSpawnType spawnType, @Nullable SpawnGroupData spawnGroupData) {
+    public SpawnGroupData finalizeSpawn(ServerLevelAccessor p_146746_, DifficultyInstance p_146747_, EntitySpawnReason p_363316_, @Nullable SpawnGroupData p_146749_) {
         wildGenes(this, random);
-        return super.finalizeSpawn(level, difficulty, spawnType, spawnGroupData);
+        return super.finalizeSpawn(p_146746_, p_146747_, p_363316_, p_146749_);
     }
 
     public static void wildGenes(BookWyrm wyrm, RandomSource rand) {
@@ -204,11 +204,11 @@ public class BookWyrm extends Animal {
     @Override
     public void readAdditionalSaveData(CompoundTag compound) {
         super.readAdditionalSaveData(compound);
-        enchLevel = compound.getInt("EnchantingLevel");
-        digestingTime = compound.getInt("DigestingTime");
-        digested = compound.getInt("Digested");
-        toDigest = compound.getInt("ToDigest");
-        digestTimer = compound.getInt("DigestTimer");
+        enchLevel = compound.getInt("EnchantingLevel").get();
+        digestingTime = compound.getInt("DigestingTime").get();
+        digested = compound.getInt("Digested").get();
+        toDigest = compound.getInt("ToDigest").get();
+        digestTimer = compound.getInt("DigestTimer").get();
     }
 
     @Override
@@ -236,11 +236,11 @@ public class BookWyrm extends Animal {
     public AgeableMob getBreedOffspring(ServerLevel level, AgeableMob mate) {
         if(mate instanceof BookWyrm) {
             if (isGolden(mate)) {
-                GoldenBookWyrm child = DLEntities.GOLDEN_BOOK_WYRM.get().create(level);
+                GoldenBookWyrm child = DLEntities.GOLDEN_BOOK_WYRM.get().create(level, EntitySpawnReason.BREEDING);
                 mixGenes(this, (BookWyrm) mate, child, random);
                 return child;
             } else {
-                BookWyrm child = DLEntities.BOOK_WYRM.get().create(level);
+                BookWyrm child = DLEntities.BOOK_WYRM.get().create(level, EntitySpawnReason.BREEDING);
                 mixGenes(this, (BookWyrm) mate, child, random);
                 return child;
             }

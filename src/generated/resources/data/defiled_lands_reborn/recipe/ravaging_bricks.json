@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "#": {
-      "item": "minecraft:bricks"
-    },
-    "X": {
-      "item": "defiled_lands_reborn:ravaging_essence"
-    }
+    "#": "minecraft:bricks",
+    "X": "defiled_lands_reborn:ravaging_essence"
   },
   "pattern": [
     "###",

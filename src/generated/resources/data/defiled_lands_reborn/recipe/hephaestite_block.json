@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "#": {
-      "item": "defiled_lands_reborn:hephaestite_shard"
-    }
+    "#": "defiled_lands_reborn:hephaestite_shard"
   },
   "pattern": [
     "###",

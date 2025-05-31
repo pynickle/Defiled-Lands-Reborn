@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "#": {
-      "item": "defiled_lands_reborn:ravaging_essence"
-    },
-    "X": {
-      "item": "defiled_lands_reborn:umbrium_ingot"
-    }
+    "#": "defiled_lands_reborn:ravaging_essence",
+    "X": "defiled_lands_reborn:umbrium_ingot"
   },
   "pattern": [
     " # ",

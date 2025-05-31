@@ -2,15 +2,9 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "#": {
-      "item": "defiled_lands_reborn:scarlite"
-    },
-    "S": {
-      "item": "defiled_lands_reborn:black_heart"
-    },
-    "X": {
-      "item": "defiled_lands_reborn:umbrium_ingot"
-    }
+    "#": "defiled_lands_reborn:scarlite",
+    "S": "defiled_lands_reborn:black_heart",
+    "X": "defiled_lands_reborn:umbrium_ingot"
   },
   "pattern": [
     "#X ",

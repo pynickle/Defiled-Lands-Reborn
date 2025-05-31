@@ -26,7 +26,6 @@ public class DefiledLandsReborn {
         ConfigHolder.init(modContainer, modEventBus);
 
         DLSounds.SOUNDS.register(modEventBus);
-        DLArmorMaterials.MATERIALS.register(modEventBus);
 
         DLBlocks.BLOCKS.register(modEventBus);
         DLItems.ITEMS.register(modEventBus);

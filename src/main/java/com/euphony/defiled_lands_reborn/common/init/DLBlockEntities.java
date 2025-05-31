@@ -14,7 +14,6 @@ public class DLBlockEntities {
 
     public static final Supplier<BlockEntityType<ConjuringAltarBlockEntity>> CONJURING_ALTAR_BE = BLOCK_ENTITY_TYPES.register(
             "conjuring_altar",
-            () -> BlockEntityType.Builder.of(ConjuringAltarBlockEntity::new, DLBlocks.CONJURING_ALTAR.get())
-                    .build(null)
+            () -> new BlockEntityType<>(ConjuringAltarBlockEntity::new, DLBlocks.CONJURING_ALTAR.get())
     );
 }

@@ -1,5 +1,6 @@
 package com.euphony.defiled_lands_reborn.common.effect;
 
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.entity.LivingEntity;
@@ -10,7 +11,7 @@ public class GroundedEffect extends MobEffect {
     }
 
     @Override
-    public boolean applyEffectTick(LivingEntity livingEntity, int amplifier) {
+    public boolean applyEffectTick(ServerLevel level, LivingEntity livingEntity, int amplifier) {
         if (!livingEntity.onGround()) {
             if (livingEntity.yya > 0) {
                 livingEntity.yya /= (float) (amplifier + 2);

@@ -7,7 +7,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
@@ -15,20 +15,23 @@ import net.minecraft.world.entity.projectile.ShulkerBullet;
 import net.minecraft.world.entity.projectile.SmallFireball;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.ItemUseAnimation;
 import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.item.UseAnim;
+import net.minecraft.world.item.component.TooltipDisplay;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 
 import java.util.List;
+import java.util.function.Consumer;
 
 public abstract class TearsItem extends Item {
     protected static final int USE_DURATION = 72000;
     protected int warmup, tickRate;
 
     public TearsItem(Properties properties, int warmup, int tickRate) {
-        super(properties.stacksTo(1).durability(2107));
+        super(properties.stacksTo(1).durability(2107)
+                .repairable(DLItems.REMORSEFUL_GEM.asItem()).enchantable(1));
         this.warmup = USE_DURATION - warmup;
         this.tickRate = tickRate;
     }
@@ -47,32 +50,22 @@ public abstract class TearsItem extends Item {
     protected abstract void fire(ItemStack stack, LivingEntity player, int time);
 
     @Override
-    public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand usedHand) {
-        ItemStack itemstack = player.getItemInHand(usedHand);
+    public InteractionResult use(Level level, Player player, InteractionHand usedHand) {
         player.startUsingItem(usedHand);
-        return InteractionResultHolder.success(itemstack);
+        return InteractionResult.SUCCESS;
     }
 
-    @Override
-    public UseAnim getUseAnimation(ItemStack stack) {
-        return UseAnim.BOW;
-    }
 
     @Override
-    public int getEnchantmentValue(ItemStack stack) {
-        return 1;
-    }
-
-    @Override
-    public boolean isValidRepairItem(ItemStack stack, ItemStack repairCandidate) {
-        return stack.is(DLItems.REMORSEFUL_GEM);
+    public ItemUseAnimation getUseAnimation(ItemStack stack) {
+        return ItemUseAnimation.BOW;
     }
 
     protected abstract String getItemName();
 
     @Override
-    public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
-        ItemUtils.addTooltip(tooltipComponents, "item.defiled_lands_reborn." + getItemName() + ".tooltip");
+    public void appendHoverText(ItemStack stack, TooltipContext context, TooltipDisplay tooltipDisplay, Consumer<Component> tooltipAdder, TooltipFlag flag) {
+        ItemUtils.addTooltip(tooltipAdder, "item.defiled_lands_reborn." + getItemName() + ".tooltip");
     }
 
     public static class Flame extends TearsItem {
@@ -102,10 +95,10 @@ public abstract class TearsItem extends Item {
                             lookAngle.y * 0.2D,
                             lookAngle.z * 0.2D)
                     );
-                    projectile.moveTo(
-                            player.getX(),
+                    projectile.moveOrInterpolateTo(
+                            new Vec3(player.getX(),
                             player.getEyeY(),
-                            player.getZ(),
+                            player.getZ()),
                             player.getYRot(),
                             player.getXRot()
                     );
@@ -156,7 +149,7 @@ public abstract class TearsItem extends Item {
                     Direction.Axis axis = Direction.Axis.getRandom(level.random);
                     ShulkerBullet projectile = new ShulkerBullet(level, player, target, axis);
 
-                    projectile.moveTo(player.getX(), player.getEyeY(), player.getZ(),
+                    projectile.moveOrInterpolateTo(new Vec3(player.getX(), player.getEyeY(), player.getZ()),
                             player.getYRot(), player.getXRot()
                     );
 

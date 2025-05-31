@@ -2,15 +2,9 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "R": {
-      "item": "defiled_lands_reborn:ravaging_ingot"
-    },
-    "S": {
-      "item": "defiled_lands_reborn:scarlite"
-    },
-    "U": {
-      "item": "defiled_lands_reborn:umbrium_ingot"
-    }
+    "R": "defiled_lands_reborn:ravaging_ingot",
+    "S": "defiled_lands_reborn:scarlite",
+    "U": "defiled_lands_reborn:umbrium_ingot"
   },
   "pattern": [
     " R ",

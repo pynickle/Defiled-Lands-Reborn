@@ -6,6 +6,7 @@ import com.euphony.defiled_lands_reborn.common.tag.DLEntityTags;
 import com.euphony.defiled_lands_reborn.utils.Utils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.InsideBlockEffectApplier;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -48,7 +49,7 @@ public class BlastemBlock extends Block {
     }
 
     @Override
-    protected void entityInside(BlockState state, Level level, BlockPos pos, Entity entity) {
+    protected void entityInside(BlockState state, Level level, BlockPos pos, Entity entity, InsideBlockEffectApplier effectApplier) {
         if(state.getValue(BlockStateProperties.AGE_15) == 15) {
             if(entity instanceof LivingEntity livingEntity) {
                 if(livingEntity.getType().getTags().anyMatch((p) -> p.equals(DLEntityTags.IS_DEFILED))){

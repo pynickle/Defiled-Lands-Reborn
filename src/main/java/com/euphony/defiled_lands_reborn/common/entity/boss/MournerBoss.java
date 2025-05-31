@@ -39,7 +39,6 @@ import net.minecraft.world.entity.projectile.ShulkerBullet;
 import net.minecraft.world.entity.projectile.SmallFireball;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Explosion;
-import net.minecraft.world.level.GameRules;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
@@ -56,7 +55,7 @@ import java.util.EnumSet;
 public class MournerBoss extends Monster {
     private final ServerBossEvent bossEvent;
 
-    private @Nullable Player unlimitedLastHurtByPlayer;
+    private @Nullable EntityReference<Player> unlimitedLastHurtByPlayer;
 
     public MournerBoss(EntityType<? extends Monster> entityType, Level level) {
         super(entityType, level);
@@ -70,7 +69,6 @@ public class MournerBoss extends Monster {
         FlyingPathNavigation flyingpathnavigation = new FlyingPathNavigation(this, level);
         flyingpathnavigation.setCanOpenDoors(false);
         flyingpathnavigation.setCanFloat(true);
-        flyingpathnavigation.setCanPassDoors(true);
         return flyingpathnavigation;
     }
 
@@ -110,7 +108,7 @@ public class MournerBoss extends Monster {
     @Override
     public void readAdditionalSaveData(CompoundTag compound) {
         super.readAdditionalSaveData(compound);
-        this.setInvulTime(compound.getInt("Invul"));
+        this.setInvulTime(compound.getInt("Invul").get());
         if (this.hasCustomName()) {
             this.bossEvent.setName(this.getDisplayName());
         }
@@ -145,7 +143,7 @@ public class MournerBoss extends Monster {
     }
 
     @Override
-    protected int calculateFallDamage(float fallDistance, float damageMultiplier) {
+    protected int calculateFallDamage(double fallDistance, float damageMultiplier) {
         return 0;
     }
 
@@ -156,8 +154,11 @@ public class MournerBoss extends Monster {
             this.unlimitedLastHurtByPlayer = this.lastHurtByPlayer;
         }
 
-        if (this.unlimitedLastHurtByPlayer != null && this.unlimitedLastHurtByPlayer.isRemoved()) {
-            this.unlimitedLastHurtByPlayer = null;
+        if (this.unlimitedLastHurtByPlayer != null) {
+            Player p = this.unlimitedLastHurtByPlayer.getEntity(this.level(), Player.class);
+            if (p == null || p.isRemoved()) {
+                this.unlimitedLastHurtByPlayer = null;
+            }
         }
 
         Level level = level();
@@ -206,7 +207,7 @@ public class MournerBoss extends Monster {
 
 
     @Override
-    protected void customServerAiStep() {
+    protected void customServerAiStep(ServerLevel level) {
         if (this.getInvulTime() > 0) {
             int j1 = this.getInvulTime() - 1;
 
@@ -240,8 +241,8 @@ public class MournerBoss extends Monster {
     }
 
     @Override
-    public boolean doHurtTarget(Entity entity) {
-        if (super.doHurtTarget(entity)) {
+    public boolean doHurtTarget(ServerLevel level, Entity entity) {
+        if (super.doHurtTarget(level, entity)) {
             int force = 6;
 
             if (entity instanceof LivingEntity) {
@@ -268,13 +269,13 @@ public class MournerBoss extends Monster {
     }
 
     @Override
-    public boolean hurt(DamageSource source, float amount) {
+    public boolean hurtServer(ServerLevel level, DamageSource source, float amount) {
         if (!source.is(DamageTypes.DROWN) && !(source.getEntity() instanceof MournerBoss)) {
             if (this.getInvulTime() > 0 && !source.is(DamageTypes.FELL_OUT_OF_WORLD)) {
                 return false;
             }
 
-            return super.hurt(source, amount);
+            return super.hurtServer(level, source, amount);
         } else {
             return false;
         }
@@ -300,12 +301,11 @@ public class MournerBoss extends Monster {
             level().addParticle(ParticleTypes.EXPLOSION, getX() + (double) f, getY() + 2.0D + (double) f1, getZ() + (double) f2, 0.0D, 0.0D, 0.0D);
         }
 
-        boolean flag = this.level().getGameRules().getBoolean(GameRules.RULE_DOMOBLOOT);
         int i = 200;
 
         if (!level().isClientSide) {
-            if (this.deathTime > 150 && this.deathTime % 5 == 0 && flag) {
-                int award = EventHooks.getExperienceDrop(this, this.unlimitedLastHurtByPlayer, Mth.floor((float)i * 0.08F));
+            if (this.deathTime > 150 && this.deathTime % 5 == 0) {
+                int award = EventHooks.getExperienceDrop(this, EntityReference.get(this.unlimitedLastHurtByPlayer, level(), Player.class), Mth.floor((float)i * 0.08F));
                 ExperienceOrb.award((ServerLevel)this.level(), this.position(), award);
             }
             if (this.deathTime == 1 && !this.isSilent()) {
@@ -316,11 +316,16 @@ public class MournerBoss extends Monster {
 
         this.setDeltaMovement(0, 0.01f, 0);
         if (this.deathTime >= 200) {
-            if (!level().isClientSide && flag) {
+            if (!level().isClientSide) {
                 if (this.unlimitedLastHurtByPlayer != null) {
-                    int award = EventHooks.getExperienceDrop(this, this.unlimitedLastHurtByPlayer, Mth.floor((float) i * 0.2F));
+                    int award = EventHooks.getExperienceDrop(this, EntityReference.get(this.unlimitedLastHurtByPlayer, level(), Player.class), Mth.floor((float) i * 0.2F));
                     ExperienceOrb.award((ServerLevel) this.level(), this.position(), award);
-                    this.dropFromLootTable(damageSources().playerAttack(this.unlimitedLastHurtByPlayer), true);
+                    Player player = EntityReference.get(this.unlimitedLastHurtByPlayer, level(), Player.class);
+                    if(player != null) {
+                        this.dropFromLootTable((ServerLevel) level(), damageSources().playerAttack(player), true);
+                    } else {
+                        this.dropFromLootTable((ServerLevel) level(), damageSources().genericKill(), true);
+                    }
                 }
 
                 this.remove(RemovalReason.KILLED);
@@ -442,7 +447,7 @@ public class MournerBoss extends Monster {
             LivingEntity livingEntity = mourner.getTarget();
 
             if (mourner.getBoundingBox().inflate(0.5).intersects(livingEntity.getBoundingBox())) {
-                mourner.doHurtTarget(livingEntity);
+                mourner.doHurtTarget((ServerLevel) mourner.level(), livingEntity);
                 mourner.swing(InteractionHand.MAIN_HAND);
                 mourner.setIsCharging(false);
             } else {
@@ -609,7 +614,7 @@ public class MournerBoss extends Monster {
         if (level.hasChunkAt(blockpos)) {
             boolean flag1 = false;
 
-            while(!flag1 && blockpos.getY() > level.getMinBuildHeight()) {
+            while(!flag1 && blockpos.getY() > level.getMinY()) {
                 BlockPos blockpos1 = blockpos.below();
                 BlockState blockstate = level.getBlockState(blockpos1);
                 if (blockstate.blocksMotion()) {

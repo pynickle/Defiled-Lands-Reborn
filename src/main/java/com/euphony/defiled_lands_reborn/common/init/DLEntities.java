@@ -9,15 +9,16 @@ import com.euphony.defiled_lands_reborn.common.entity.projectile.BlazingBlastemF
 import com.euphony.defiled_lands_reborn.common.entity.projectile.RavagerProjectile;
 import com.euphony.defiled_lands_reborn.utils.Utils;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.monster.Zombie;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.SpawnEggItem;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.neoforge.common.DeferredSpawnEggItem;
 import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
 import net.neoforged.neoforge.event.entity.RegisterSpawnPlacementsEvent;
 import net.neoforged.neoforge.registries.DeferredHolder;
@@ -51,26 +52,26 @@ public class DLEntities {
             .sized(0.7F, 2.4F).eyeHeight(2.14F).fireImmune().clientTrackingRange(10));
 
     public static final DeferredHolder<EntityType<?>, EntityType<RavagerProjectile>> RAVAGER_PROJECTILE = registerMisc("ravager_projectile", () -> EntityType.Builder.<RavagerProjectile>of(RavagerProjectile::new, MobCategory.MISC)
-            .sized(0.3125F, 0.3125F).clientTrackingRange(4).updateInterval(10));
+            .sized(0.3125F, 0.3125F).clientTrackingRange(4).updateInterval(10).noLootTable());
     public static final DeferredHolder<EntityType<?>, EntityType<BlastemFruitProjectile>> BLASTEM_FRUIT_PROJECTILE = registerMisc("blastem_fruit_projectile", () -> EntityType.Builder.<BlastemFruitProjectile>of(BlastemFruitProjectile::new, MobCategory.MISC)
-            .sized(0.3125F, 0.3125F).clientTrackingRange(4).updateInterval(10));
+            .sized(0.3125F, 0.3125F).clientTrackingRange(4).updateInterval(10).noLootTable());
     public static final DeferredHolder<EntityType<?>, EntityType<BlazingBlastemFruitProjectile>> BLAZING_BLASTEM_FRUIT_PROJECTILE = registerMisc("blazing_blastem_fruit_projectile", () -> EntityType.Builder.<BlazingBlastemFruitProjectile>of(BlazingBlastemFruitProjectile::new, MobCategory.MISC)
-            .sized(0.3125F, 0.3125F).clientTrackingRange(4).updateInterval(10));
+            .sized(0.3125F, 0.3125F).clientTrackingRange(4).updateInterval(10).noLootTable());
 
     public static <E extends Entity> DeferredHolder<EntityType<?>, EntityType<E>> registerMisc(String name, Supplier<EntityType.Builder<E>> builder) {
-        return ENTITIES.register(name, () -> builder.get().build(Utils.prefix(name).toString()));
+        return ENTITIES.register(name, () -> builder.get().build(ResourceKey.create(Registries.ENTITY_TYPE, Utils.prefix(name))));
     }
 
     private static <T extends Mob> DeferredHolder<EntityType<?>, EntityType<T>> registerMob(String name, int eggPrimary, int eggSecondary, Supplier<EntityType.Builder<T>> builder) {
         DeferredHolder<EntityType<?>, EntityType<T>> entityType = register(name, builder);
-        DeferredItem<Item> spawnEggItem = DLItems.register( name + "_spawn_egg", p -> new DeferredSpawnEggItem(entityType, eggPrimary, eggSecondary, p));
+        DeferredItem<Item> spawnEggItem = DLItems.register( name + "_spawn_egg", p -> new SpawnEggItem(entityType.get(), p));
         DLItems.SPAWN_EGGS.add(spawnEggItem);
         return entityType;
     }
 
     public static <T extends Entity> DeferredHolder<EntityType<?>, EntityType<T>> register(String name, Supplier<EntityType.Builder<T>> builder) {
         ResourceLocation location = Utils.prefix(name);
-        return ENTITIES.register(name, () -> builder.get().build(location.toString()));
+        return ENTITIES.register(name, () -> builder.get().build(ResourceKey.create(Registries.ENTITY_TYPE, location)));
     }
 
 

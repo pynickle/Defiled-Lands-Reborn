@@ -9,13 +9,13 @@ import net.minecraft.client.model.geom.builders.CubeListBuilder;
 import net.minecraft.client.model.geom.builders.LayerDefinition;
 import net.minecraft.client.model.geom.builders.MeshDefinition;
 import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.world.entity.Entity;
+import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
 
-public class BookWyrmModel<T extends Entity> extends QuadrupedModel<T> {
+public class BookWyrmModel extends QuadrupedModel<LivingEntityRenderState> {
     public static final ModelLayerLocation MODEL = new ModelLayerLocation(Utils.prefix("book_wyrm"), "main");
 
     public BookWyrmModel(ModelPart p_170515_) {
-        super(p_170515_, false, 4, 4, 2, 2, 24);
+        super(p_170515_);
     }
 
     public static LayerDefinition createBodyLayer() {

@@ -2,15 +2,9 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "item": "defiled_lands_reborn:foul_slime"
-    },
-    {
-      "item": "defiled_lands_reborn:defilement_powder"
-    },
-    {
-      "item": "minecraft:sugar"
-    }
+    "defiled_lands_reborn:foul_slime",
+    "defiled_lands_reborn:defilement_powder",
+    "minecraft:sugar"
   ],
   "result": {
     "count": 1,

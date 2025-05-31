@@ -2,23 +2,23 @@ package com.euphony.defiled_lands_reborn.common.item;
 
 import com.euphony.defiled_lands_reborn.common.init.DLEnchantments;
 import net.minecraft.core.Holder;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.core.RegistryAccess;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.AxeItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantment;
+import net.minecraft.world.item.enchantment.ItemEnchantments;
 import net.minecraft.world.level.Level;
 
 public abstract class GunItem extends Item {
     public GunItem(Properties properties) {
-        super(properties.stacksTo(1));
-    }
-
-    @Override
-    public int getEnchantmentValue(ItemStack stack) {
-        return 1;
+        super(properties.stacksTo(1).enchantable(1));
     }
 
     protected float getSharpshooterBonus(RegistryAccess registryAccess, ItemStack gun) {

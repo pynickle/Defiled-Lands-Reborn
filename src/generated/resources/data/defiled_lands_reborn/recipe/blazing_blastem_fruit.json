@@ -2,21 +2,11 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "item": "defiled_lands_reborn:hephaestite_shard"
-    },
-    {
-      "item": "defiled_lands_reborn:blastem_fruit"
-    },
-    {
-      "item": "defiled_lands_reborn:blastem_fruit"
-    },
-    {
-      "item": "defiled_lands_reborn:blastem_fruit"
-    },
-    {
-      "item": "defiled_lands_reborn:blastem_fruit"
-    }
+    "defiled_lands_reborn:hephaestite_shard",
+    "defiled_lands_reborn:blastem_fruit",
+    "defiled_lands_reborn:blastem_fruit",
+    "defiled_lands_reborn:blastem_fruit",
+    "defiled_lands_reborn:blastem_fruit"
   ],
   "result": {
     "count": 4,

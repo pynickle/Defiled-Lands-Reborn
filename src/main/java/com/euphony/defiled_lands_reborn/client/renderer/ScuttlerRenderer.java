@@ -8,17 +8,24 @@ import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelLayers;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
+import net.minecraft.client.renderer.entity.SpiderRenderer;
+import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
 import net.minecraft.resources.ResourceLocation;
 
-public class ScuttlerRenderer extends MobRenderer<Scuttler, SpiderModel<Scuttler>> {
+public class ScuttlerRenderer extends MobRenderer<Scuttler, LivingEntityRenderState, SpiderModel> {
     private static final ResourceLocation SCUTTLER_LOCATION = Utils.prefix("textures/entity/scuttler.png");
 
     public ScuttlerRenderer(EntityRendererProvider.Context p_174401_) {
         this(p_174401_, ModelLayers.SPIDER);
     }
 
+    @Override
+    public LivingEntityRenderState createRenderState() {
+        return new LivingEntityRenderState();
+    }
+
     public ScuttlerRenderer(EntityRendererProvider.Context context, ModelLayerLocation layer) {
-        super(context, new SpiderModel<>(context.bakeLayer(layer)), 0.8F);
+        super(context, new SpiderModel(context.bakeLayer(layer)), 0.8F);
         this.addLayer(new ScuttlerEyesLayer<>(this));
     }
 
@@ -26,7 +33,7 @@ public class ScuttlerRenderer extends MobRenderer<Scuttler, SpiderModel<Scuttler
         return 180.0F;
     }
 
-    public ResourceLocation getTextureLocation(Scuttler entity) {
+    public ResourceLocation getTextureLocation(LivingEntityRenderState entity) {
         return SCUTTLER_LOCATION;
     }
 }

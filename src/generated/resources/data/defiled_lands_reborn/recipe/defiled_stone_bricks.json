@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "#": {
-      "item": "defiled_lands_reborn:defiled_stone"
-    }
+    "#": "defiled_lands_reborn:defiled_stone"
   },
   "pattern": [
     "##",

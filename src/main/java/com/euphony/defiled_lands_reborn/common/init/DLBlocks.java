@@ -3,6 +3,7 @@ package com.euphony.defiled_lands_reborn.common.init;
 import com.euphony.defiled_lands_reborn.DefiledLandsReborn;
 import com.euphony.defiled_lands_reborn.common.block.*;
 import com.euphony.defiled_lands_reborn.common.worldgen.features.tree.DLTreeGrowers;
+import net.minecraft.util.ColorRGBA;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -12,13 +13,13 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 
 import java.util.function.Function;
 
-
 public class DLBlocks {
     public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(DefiledLandsReborn.MOD_ID);
 
     public static final DeferredBlock<CorruptedBlock> DEFILED_STONE = registerWithItem("defiled_stone", CorruptedBlock::new,
             BlockBehaviour.Properties.ofFullCopy(Blocks.STONE));
-    public static final DeferredBlock<CorruptedFallingBlock> DEFILED_SAND = registerWithItem("defiled_sand", CorruptedFallingBlock::new,
+    public static final DeferredBlock<CorruptedColoredFallingBlock> DEFILED_SAND = registerWithItem("defiled_sand",
+            p -> new CorruptedColoredFallingBlock(new ColorRGBA(14406560), p),
             BlockBehaviour.Properties.ofFullCopy(Blocks.SAND));
     public static final DeferredBlock<CorruptedBlock> DEFILED_SANDSTONE = registerWithItem("defiled_sandstone", CorruptedBlock::new,
             BlockBehaviour.Properties.ofFullCopy(Blocks.SANDSTONE));
@@ -26,12 +27,13 @@ public class DLBlocks {
             BlockBehaviour.Properties.ofFullCopy(Blocks.DIRT));
     public static final DeferredBlock<CorruptedGrassBlock> DEFILED_GRASS_BLOCK = registerWithItem("defiled_grass_block", CorruptedGrassBlock::new,
             BlockBehaviour.Properties.ofFullCopy(Blocks.GRASS_BLOCK));
-    public static final DeferredBlock<CorruptedFallingBlock> DEFILED_GRAVEL = registerWithItem("defiled_gravel", CorruptedFallingBlock::new,
+    public static final DeferredBlock<CorruptedColoredFallingBlock> DEFILED_GRAVEL = registerWithItem("defiled_gravel",
+            p -> new CorruptedColoredFallingBlock(new ColorRGBA(-8356741), p),
             BlockBehaviour.Properties.ofFullCopy(Blocks.GRAVEL));
 
     public static final DeferredBlock<CorruptedLogBlock> TENEBRA_LOG = registerWithItem("tenebra_log", CorruptedLogBlock::new,
             BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LOG));
-    public static final DeferredBlock<CorruptedLeavesBlock> TENEBRA_LEAVES = registerWithItem("tenebra_leaves", CorruptedLeavesBlock::new,
+    public static final DeferredBlock<CorruptedLeavesBlock> TENEBRA_LEAVES = registerWithItem("tenebra_leaves", p -> new CorruptedLeavesBlock(0.01f, p),
             BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LEAVES));
     public static final DeferredBlock<TenebraSaplingBlock> TENEBRA_SAPLING = registerWithItem("tenebra_sapling", (p) -> new TenebraSaplingBlock(DLTreeGrowers.TENEBRA, p),
             BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SAPLING));

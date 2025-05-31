@@ -8,6 +8,7 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
@@ -55,7 +56,10 @@ public class RavagerProjectile extends AbstractHurtingProjectile implements Item
 
         DamageSource damageSource = damageSources().thrown(this, owner);
         float baseDamage = getDamage();
-        boolean success = target.hurt(damageSource, baseDamage);
+        boolean success = true;
+        if(!level().isClientSide) {
+            success = target.hurtServer((ServerLevel) level(), damageSource, baseDamage);
+        }
 
         if (success) {
             if (target instanceof LivingEntity livingTarget) {
@@ -99,7 +103,7 @@ public class RavagerProjectile extends AbstractHurtingProjectile implements Item
     @Override
     public void readAdditionalSaveData(CompoundTag compound) {
         super.readAdditionalSaveData(compound);
-        damage = compound.getFloat("Damage");
+        damage = compound.getFloat("Damage").get();
     }
 
     @Override

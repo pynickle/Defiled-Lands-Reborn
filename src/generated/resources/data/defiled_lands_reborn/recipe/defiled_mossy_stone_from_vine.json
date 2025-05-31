@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shapeless",
   "category": "building",
   "ingredients": [
-    {
-      "item": "defiled_lands_reborn:defiled_stone"
-    },
-    {
-      "item": "minecraft:vine"
-    }
+    "defiled_lands_reborn:defiled_stone",
+    "minecraft:vine"
   ],
   "result": {
     "count": 1,

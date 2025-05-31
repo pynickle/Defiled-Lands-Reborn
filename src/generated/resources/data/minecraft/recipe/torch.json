@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "R": "defiled_lands_reborn:hephaestite_shard",
+    "S": "minecraft:stick"
+  },
+  "pattern": [
+    "R",
+    "S"
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:torch"
+  }
+}

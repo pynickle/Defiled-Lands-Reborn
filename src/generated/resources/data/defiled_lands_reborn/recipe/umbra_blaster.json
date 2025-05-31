@@ -2,15 +2,9 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "#": {
-      "item": "defiled_lands_reborn:umbrium_ingot"
-    },
-    "S": {
-      "item": "defiled_lands_reborn:scuttler_eye"
-    },
-    "X": {
-      "item": "defiled_lands_reborn:umbrium_block"
-    }
+    "#": "defiled_lands_reborn:umbrium_ingot",
+    "S": "defiled_lands_reborn:scuttler_eye",
+    "X": "defiled_lands_reborn:umbrium_block"
   },
   "pattern": [
     "  S",

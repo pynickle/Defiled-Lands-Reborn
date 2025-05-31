@@ -12,13 +12,15 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
 public class ScuronotteBlock extends BushBlock {
+    public static final MapCodec<BushBlock> CODEC = simpleCodec(ScuronotteBlock::new);
+
     public ScuronotteBlock(Properties properties) {
         super(properties);
     }
 
     @Override
-    protected MapCodec<? extends BushBlock> codec() {
-        return null;
+    public MapCodec<BushBlock> codec() {
+        return CODEC;
     }
 
     protected static final VoxelShape SHAPE = Block.box(5.0F, 0.0F, 5.0F, 11.0F, 6.0F, 11.0F);
@@ -30,7 +32,7 @@ public class ScuronotteBlock extends BushBlock {
 
     @Override
     protected boolean mayPlaceOn(BlockState state, BlockGetter level, BlockPos pos) {
-        return state.isSolidRender(level, pos);
+        return state.isSolidRender();
     }
 
     @Override

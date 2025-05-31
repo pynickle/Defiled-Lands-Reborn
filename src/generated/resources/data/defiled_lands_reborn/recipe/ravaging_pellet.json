@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "R": {
-      "item": "defiled_lands_reborn:ravaging_ingot"
-    },
-    "S": {
-      "item": "defiled_lands_reborn:defiled_stone"
-    }
+    "R": "defiled_lands_reborn:ravaging_ingot",
+    "S": "defiled_lands_reborn:defiled_stone"
   },
   "pattern": [
     " S ",

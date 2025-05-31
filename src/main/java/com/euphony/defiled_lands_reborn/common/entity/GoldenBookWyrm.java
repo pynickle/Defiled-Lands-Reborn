@@ -5,6 +5,7 @@ import com.euphony.defiled_lands_reborn.config.ConfigHelper;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.AgeableMob;
+import net.minecraft.world.entity.EntitySpawnReason;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
@@ -21,7 +22,7 @@ public class GoldenBookWyrm extends BookWyrm {
 
     @Override
     public List<EnchantmentInstance> getPossibleEnchantments() {
-        return EnchantmentHelper.selectEnchantment(random, Items.BOOK.getDefaultInstance(), getEnchLevel(), level().registryAccess().registryOrThrow(Registries.ENCHANTMENT).holders().map(IHolderExtension::getDelegate));
+        return EnchantmentHelper.selectEnchantment(random, Items.BOOK.getDefaultInstance(), getEnchLevel(), level().registryAccess().lookupOrThrow(Registries.ENCHANTMENT).stream().map(a -> a.exclusiveSet().get(0)).map(IHolderExtension::getDelegate));
     }
 
     @Override
@@ -44,11 +45,11 @@ public class GoldenBookWyrm extends BookWyrm {
                 i = 10;
             }
             if (random.nextInt(i) == 0) {
-                GoldenBookWyrm child = DLEntities.GOLDEN_BOOK_WYRM.get().create(level);
+                GoldenBookWyrm child = DLEntities.GOLDEN_BOOK_WYRM.get().create(level, EntitySpawnReason.BREEDING);
                 mixGenes(this, (BookWyrm) mate, child, random);
                 return child;
             } else {
-                BookWyrm child = DLEntities.BOOK_WYRM.get().create(level);
+                BookWyrm child = DLEntities.BOOK_WYRM.get().create(level, EntitySpawnReason.BREEDING);
                 mixGenes(this, (BookWyrm) mate, child, random);
                 return child;
             }

@@ -2,15 +2,9 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "E": {
-      "item": "defiled_lands_reborn:scuttler_eye"
-    },
-    "S": {
-      "item": "defiled_lands_reborn:scarlite"
-    },
-    "U": {
-      "item": "defiled_lands_reborn:umbrium_ingot"
-    }
+    "E": "defiled_lands_reborn:scuttler_eye",
+    "S": "defiled_lands_reborn:scarlite",
+    "U": "defiled_lands_reborn:umbrium_ingot"
   },
   "pattern": [
     "UEE",

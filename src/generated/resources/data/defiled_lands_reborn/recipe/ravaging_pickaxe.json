@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "category": "equipment",
   "key": {
-    "#": {
-      "item": "defiled_lands_reborn:ravaging_ingot"
-    },
-    "S": {
-      "item": "minecraft:stick"
-    }
+    "#": "defiled_lands_reborn:ravaging_ingot",
+    "S": "minecraft:stick"
   },
   "pattern": [
     "###",

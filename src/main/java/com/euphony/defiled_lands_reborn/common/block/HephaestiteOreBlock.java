@@ -40,9 +40,4 @@ public class HephaestiteOreBlock extends DropExperienceBlock {
     protected void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
         CorruptionUtils.spread(level, pos, state, random);
     }
-
-    @Override
-    public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
-        ItemUtils.addTooltip(tooltipComponents, "block.defiled_lands_reborn.hephaestite_ore.tooltip");
-    }
 }

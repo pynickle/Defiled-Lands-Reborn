@@ -2,16 +2,15 @@ package com.euphony.defiled_lands_reborn.event;
 
 import com.euphony.defiled_lands_reborn.DefiledLandsReborn;
 import com.euphony.defiled_lands_reborn.common.entity.projectile.BlastemFruitProjectile;
+import com.euphony.defiled_lands_reborn.common.init.DLBlocks;
 import com.euphony.defiled_lands_reborn.common.init.DLEffects;
 import com.euphony.defiled_lands_reborn.common.init.DLItems;
-import com.euphony.defiled_lands_reborn.common.item.tool.DLTiers;
+import com.euphony.defiled_lands_reborn.common.tag.DLItemTags;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.item.ItemEntity;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.TieredItem;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -47,6 +46,10 @@ public class DLVanillaEvents {
             addTooltip(components, "item.defiled_lands_reborn.ravaging_pickaxe.tooltip");
         } else if(stack.is(DLItems.RAVAGING_SHOVEL)) {
             addTooltip(components, "item.defiled_lands_reborn.ravaging_shovel.tooltip");
+        } else if(stack.is(DLBlocks.HEPHAESTITE_BLOCK.asItem())) {
+            addTooltip(components, "block.defiled_lands_reborn.hephaestite_block.tooltip");
+        } else if(stack.is(DLBlocks.HEPHAESTITE_ORE.asItem())) {
+            addTooltip(components, "block.defiled_lands_reborn.hephaestite_ore.tooltip");
         }
     }
 
@@ -73,15 +76,13 @@ public class DLVanillaEvents {
     @SubscribeEvent(priority = EventPriority.LOWEST)
     public static void onBlockBreak(BlockEvent.BreakEvent event) {
         if (!event.getLevel().isClientSide() && event.getPlayer() != null) {
-            Item item = event.getPlayer().getMainHandItem().getItem();
+            ItemStack item = event.getPlayer().getMainHandItem();
 
-            if (item instanceof TieredItem tieredItem) {
-                if (tieredItem.getTier().equals(DLTiers.RAVAGING)) {
-                    BlockState state = event.getState();
-                    event.setCanceled(true);
-                    state.getBlock().destroy(event.getLevel(), event.getPos(), state);
-                    event.getLevel().destroyBlock(event.getPos(), false);
-                }
+            if (item.is(DLItemTags.RAVAGING_TOOLS)) {
+                BlockState state = event.getState();
+                event.setCanceled(true);
+                state.getBlock().destroy(event.getLevel(), event.getPos(), state);
+                event.getLevel().destroyBlock(event.getPos(), false);
             }
         }
     }

@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shapeless",
   "category": "building",
   "ingredients": [
-    {
-      "item": "defiled_lands_reborn:tenebra_log"
-    }
+    "defiled_lands_reborn:tenebra_log"
   ],
   "result": {
     "count": 4,

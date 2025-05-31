@@ -2,6 +2,7 @@ package com.euphony.defiled_lands_reborn.common.entity;
 
 import com.euphony.defiled_lands_reborn.common.init.DLEntities;
 import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.damagesource.DamageSource;
@@ -37,8 +38,8 @@ public class Host extends Zombie {
     }
 
     @Override
-    protected void actuallyHurt(DamageSource damageSource, float damageAmount) {
-        if (!this.isInvulnerableTo(damageSource)) {
+    protected void actuallyHurt(ServerLevel level, DamageSource damageSource, float amount) {
+        if (!this.isInvulnerableTo(level, damageSource)) {
             this.damageContainers.peek().setReduction(DamageContainer.Reduction.ARMOR, this.damageContainers.peek().getNewDamage() - this.getDamageAfterArmorAbsorb(damageSource, ((DamageContainer)this.damageContainers.peek()).getNewDamage()));
             this.getDamageAfterMagicAbsorb(damageSource, this.damageContainers.peek().getNewDamage());
             float damage = CommonHooks.onLivingDamagePre(this, this.damageContainers.peek());

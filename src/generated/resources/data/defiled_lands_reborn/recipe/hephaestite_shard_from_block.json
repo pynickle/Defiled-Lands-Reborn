@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "defiled_lands_reborn:hephaestite_block"
+  ],
+  "result": {
+    "count": 9,
+    "id": "defiled_lands_reborn:hephaestite_shard"
+  }
+}

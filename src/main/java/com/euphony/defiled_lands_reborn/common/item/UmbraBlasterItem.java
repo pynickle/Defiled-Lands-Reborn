@@ -13,29 +13,31 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.component.TooltipDisplay;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
 
 import java.util.List;
+import java.util.function.Consumer;
 
 public class UmbraBlasterItem extends GunItem implements IEnchantDestructive {
     public UmbraBlasterItem(Properties properties) {
-        super(properties.durability(465));
+        super(properties.durability(465).repairable(DLItems.UMBRIUM_INGOT.asItem()));
     }
 
     @Override
-    public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
+    public InteractionResult use(Level level, Player player, InteractionHand hand) {
         ItemStack stack = player.getItemInHand(hand);
         RegistryAccess registryAccess = level.registryAccess();
         boolean flag = player.isCreative() || ItemUtils.getEnchantmentLevel(registryAccess, stack, Enchantments.INFINITY) > 0;
         ItemStack ammo = findAmmo(player, DLItems.BLASTEM_FRUIT.toStack());
 
         if(ammo.isEmpty() && !flag) {
-            return InteractionResultHolder.fail(stack);
+            return InteractionResult.FAIL;
         }
 
         level.playSound(null,
@@ -43,7 +45,7 @@ public class UmbraBlasterItem extends GunItem implements IEnchantDestructive {
                 SoundEvents.SNOWBALL_THROW, SoundSource.NEUTRAL,
                 0.5F, 0.4F / (level.random.nextFloat() * 0.4F + 0.8F)
         );
-        player.getCooldowns().addCooldown(this, 10);
+        player.getCooldowns().addCooldown(stack, 10);
 
         if (!level.isClientSide) {
             BlastemFruitProjectile projectile;
@@ -72,20 +74,17 @@ public class UmbraBlasterItem extends GunItem implements IEnchantDestructive {
         consumeAmmo(stack, ammo, player, level.getRandom());
 
         player.awardStat(Stats.ITEM_USED.get(this));
-        return InteractionResultHolder.sidedSuccess(stack, level.isClientSide());
+        return InteractionResult.SUCCESS;
     }
 
     public boolean isAmmo(ItemStack stack) {
         return stack.is(DLItemTags.BLASTER_AMMO);
     }
 
-    @Override
-    public boolean isValidRepairItem(ItemStack toRepair, ItemStack repair) {
-        return repair.is(DLItems.UMBRIUM_INGOT);
-    }
 
     @Override
-    public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
-        ItemUtils.addTooltip(tooltipComponents, "item.defiled_lands_reborn.umbra_blaster.tooltip");
+    public void appendHoverText(ItemStack stack, TooltipContext context, TooltipDisplay tooltipDisplay, Consumer<Component> tooltipAdder, TooltipFlag flag) {
+        ItemUtils.addTooltip(tooltipAdder, "item.defiled_lands_reborn.umbra_blaster.tooltip");
+
     }
 }

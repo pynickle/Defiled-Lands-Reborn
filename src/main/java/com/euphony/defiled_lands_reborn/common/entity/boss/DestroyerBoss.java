@@ -18,15 +18,13 @@ import net.minecraft.util.Mth;
 import net.minecraft.world.BossEvent;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageTypes;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.ExperienceOrb;
-import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
+import net.minecraft.world.entity.boss.enderdragon.EnderDragon;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.BlockGetter;
@@ -38,6 +36,7 @@ import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.event.EventHooks;
+import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nullable;
 import java.util.EnumSet;
@@ -45,7 +44,7 @@ import java.util.EnumSet;
 public class DestroyerBoss extends Monster {
     private final ServerBossEvent bossEvent;
 
-    private @Nullable Player unlimitedLastHurtByPlayer;
+    private @Nullable EntityReference<Player> unlimitedLastHurtByPlayer;
 
     public DestroyerBoss(EntityType<? extends Monster> entityType, Level level) {
         super(entityType, level);
@@ -91,8 +90,8 @@ public class DestroyerBoss extends Monster {
     @Override
     public void readAdditionalSaveData(CompoundTag compound) {
         super.readAdditionalSaveData(compound);
-        this.setInvulTime(compound.getInt("Invul"));
-        setLeaping(compound.getBoolean("Leaping"));
+        this.setInvulTime(compound.getInt("Invul").get());
+        setLeaping(compound.getBoolean("Leaping").get());
         if (this.hasCustomName()) {
             this.bossEvent.setName(this.getDisplayName());
         }
@@ -130,7 +129,7 @@ public class DestroyerBoss extends Monster {
     }
 
     @Override
-    public boolean causeFallDamage(float fallDistance, float multiplier, DamageSource source) {
+    public boolean causeFallDamage(double p_397597_, float p_147187_, DamageSource p_147189_) {
         return false;
     }
 
@@ -152,8 +151,11 @@ public class DestroyerBoss extends Monster {
             this.unlimitedLastHurtByPlayer = this.lastHurtByPlayer;
         }
 
-        if (this.unlimitedLastHurtByPlayer != null && this.unlimitedLastHurtByPlayer.isRemoved()) {
-            this.unlimitedLastHurtByPlayer = null;
+        if (this.unlimitedLastHurtByPlayer != null) {
+            Player p = this.unlimitedLastHurtByPlayer.getEntity(this.level(), Player.class);
+            if (p == null || p.isRemoved()) {
+                this.unlimitedLastHurtByPlayer = null;
+            }
         }
 
         Level level = level();
@@ -171,9 +173,8 @@ public class DestroyerBoss extends Monster {
         }
     }
 
-
     @Override
-    protected void customServerAiStep() {
+    protected void customServerAiStep(@NotNull ServerLevel level) {
         if (this.getInvulTime() > 0) {
             int j1 = this.getInvulTime() - 1;
 
@@ -194,8 +195,8 @@ public class DestroyerBoss extends Monster {
     }
 
     @Override
-    public boolean doHurtTarget(Entity entity) {
-        if (super.doHurtTarget(entity)) {
+    public boolean doHurtTarget(ServerLevel level, Entity entity) {
+        if (super.doHurtTarget(level, entity)) {
             entity.addDeltaMovement(new Vec3(0, 0.4000000059604645D, 0));
 
             return true;
@@ -216,13 +217,13 @@ public class DestroyerBoss extends Monster {
     }
 
     @Override
-    public boolean hurt(DamageSource source, float amount) {
+    public boolean hurtServer(@NotNull ServerLevel level, DamageSource source, float amount) {
         if (!source.is(DamageTypes.DROWN) && !(source.getEntity() instanceof MournerBoss)) {
             if (this.getInvulTime() > 0 && !source.is(DamageTypes.FELL_OUT_OF_WORLD)) {
                 return false;
             }
 
-            return super.hurt(source, amount);
+            return super.hurtServer(level, source, amount);
         } else {
             return false;
         }
@@ -243,12 +244,11 @@ public class DestroyerBoss extends Monster {
             level().addParticle(ParticleTypes.EXPLOSION, getX() + (double) f, getY() + 2.0D + (double) f1, getZ() + (double) f2, 0.0D, 0.0D, 0.0D);
         }
 
-        boolean flag = this.level().getGameRules().getBoolean(GameRules.RULE_DOMOBLOOT);
         int i = 50;
 
         if (!level().isClientSide) {
-            if (this.deathTime > 150 && this.deathTime % 5 == 0 && flag) {
-                int award = EventHooks.getExperienceDrop(this, this.unlimitedLastHurtByPlayer, Mth.floor((float)i * 0.08F));
+            if (this.deathTime > 150 && this.deathTime % 5 == 0) {
+                int award = EventHooks.getExperienceDrop(this, EntityReference.get(this.unlimitedLastHurtByPlayer, level(), Player.class), Mth.floor((float)i * 0.08F));
                 ExperienceOrb.award((ServerLevel)this.level(), this.position(), award);
             }
             if (this.deathTime == 1 && !this.isSilent()) {
@@ -259,11 +259,16 @@ public class DestroyerBoss extends Monster {
 
         this.setDeltaMovement(0, 0.01f, 0);
         if (this.deathTime >= 200) {
-            if (!level().isClientSide && flag) {
+            if (!level().isClientSide) {
                 if (this.unlimitedLastHurtByPlayer != null) {
-                    int award = EventHooks.getExperienceDrop(this, this.unlimitedLastHurtByPlayer, Mth.floor((float) i * 0.2F));
+                    int award = EventHooks.getExperienceDrop(this, EntityReference.get(this.unlimitedLastHurtByPlayer, level(), Player.class), Mth.floor((float) i * 0.2F));
                     ExperienceOrb.award((ServerLevel) this.level(), this.position(), award);
-                    this.dropFromLootTable(damageSources().playerAttack(this.unlimitedLastHurtByPlayer), true);
+                    Player player = EntityReference.get(this.unlimitedLastHurtByPlayer, level(), Player.class);
+                    if(player != null) {
+                        this.dropFromLootTable((ServerLevel) level(), damageSources().playerAttack(player), true);
+                    } else {
+                        this.dropFromLootTable((ServerLevel) level(), damageSources().genericKill(), true);
+                    }
                 }
                 this.remove(RemovalReason.KILLED);
                 this.gameEvent(GameEvent.ENTITY_DIE);

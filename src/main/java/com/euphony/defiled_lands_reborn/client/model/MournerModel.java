@@ -1,21 +1,22 @@
 package com.euphony.defiled_lands_reborn.client.model;
 
+import com.euphony.defiled_lands_reborn.client.state.MournerRenderState;
 import com.euphony.defiled_lands_reborn.common.entity.boss.MournerBoss;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.model.geom.ModelPart;
 import org.jetbrains.annotations.NotNull;
 
-public class MournerModel<T extends MournerBoss> extends HumanoidModel<T> {
+public class MournerModel extends HumanoidModel<MournerRenderState> {
     public MournerModel(ModelPart root) {
         super(root);
     }
 
     @Override
-    public void setupAnim(@NotNull T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
-        super.setupAnim(entity, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch);
+    public void setupAnim(MournerRenderState renderState) {
+        super.setupAnim(renderState);
 
-        if (entity.isFiring()) {
-            switch (entity.getCurrentAttack()) {
+        if (renderState.isFiring) {
+            switch (renderState.currentAttack) {
                 case MournerBoss.ATTACK_FIREBALLS:
                     rightArm.yRot = -0.1F + head.yRot;
                     rightArm.xRot = -(float)Math.PI / 2 + head.xRot;

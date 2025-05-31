@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "item": "defiled_lands_reborn:scuronotte"
-    }
+    "defiled_lands_reborn:scuronotte"
   ],
   "result": {
     "count": 1,

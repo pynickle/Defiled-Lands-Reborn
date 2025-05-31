@@ -8,15 +8,18 @@ import com.euphony.defiled_lands_reborn.utils.Utils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.InsideBlockEffectApplier;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.ScheduledTickAccess;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
@@ -37,7 +40,7 @@ public class VilespineBlock extends Block {
     }
 
     @Override
-    protected void entityInside(BlockState state, Level level, BlockPos pos, Entity entity) {
+    protected void entityInside(BlockState state, Level level, BlockPos pos, Entity entity, InsideBlockEffectApplier effectApplier) {
         if(entity instanceof LivingEntity livingEntity) {
             if(livingEntity.getType().getTags().anyMatch((p) -> p.equals(DLEntityTags.IS_DEFILED))){
                 return;
@@ -53,7 +56,7 @@ public class VilespineBlock extends Block {
             if(livingEntity instanceof Player player) {
                 if(player.getInventory().contains(DLItems.PHYTOPROSTASIA_AMULET.toStack())) return;
             }
-            livingEntity.hurt(new DamageSource(level.registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(DamageTypes.CACTUS)), 3);
+            livingEntity.hurt(new DamageSource(level.registryAccess().lookupOrThrow(Registries.DAMAGE_TYPE).getOrThrow(DamageTypes.CACTUS)), 3);
         }
     }
 
@@ -66,13 +69,13 @@ public class VilespineBlock extends Block {
     }
 
     @Override
-    protected BlockState updateShape(BlockState state, Direction facing, BlockState facingState, LevelAccessor level, BlockPos currentPos, BlockPos facingPos) {
-        if(!state.canSurvive(level, currentPos)) return Blocks.AIR.defaultBlockState();
+    protected BlockState updateShape(BlockState state, LevelReader level, ScheduledTickAccess scheduledTickAccess, BlockPos pos, Direction direction, BlockPos neighborPos, BlockState neighborState, RandomSource random) {
+        if(!state.canSurvive(level, pos)) return Blocks.AIR.defaultBlockState();
 
-        if(level.getBlockState(currentPos.above()).isAir() && !state.getValue(TOPMOST)) state = state.setValue(TOPMOST, true);
-        else if(!level.getBlockState(currentPos.above()).isAir() && state.getValue(TOPMOST)) state = state.setValue(TOPMOST, false);
+        if(level.getBlockState(pos.above()).isAir() && !state.getValue(TOPMOST)) state = state.setValue(TOPMOST, true);
+        else if(!level.getBlockState(pos.above()).isAir() && state.getValue(TOPMOST)) state = state.setValue(TOPMOST, false);
 
-        return super.updateShape(state, facing, facingState, level, currentPos, facingPos);
+        return super.updateShape(state, level, scheduledTickAccess, pos, direction, neighborPos, neighborState, random);
     }
 
     @Override

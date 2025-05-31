@@ -1,5 +1,6 @@
 package com.euphony.defiled_lands_reborn.common.effect;
 
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
@@ -11,7 +12,7 @@ public class BleedingEffect extends MobEffect {
     }
 
     @Override
-    public boolean applyEffectTick(LivingEntity livingEntity, int amplifier) {
+    public boolean applyEffectTick(ServerLevel level, LivingEntity livingEntity, int amplifier) {
         DamageSource damageSource = livingEntity.damageSources().magic();
         livingEntity.hurt(damageSource, amplifier + 1);
         return true;

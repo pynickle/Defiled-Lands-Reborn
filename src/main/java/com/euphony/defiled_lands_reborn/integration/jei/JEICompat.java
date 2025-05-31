@@ -17,7 +17,7 @@ import org.jetbrains.annotations.NotNull;
 public class JEICompat implements IModPlugin {
     @Override
     public void registerRecipeCatalysts(IRecipeCatalystRegistration registration) {
-        registration.addRecipeCatalyst(DLItems.DEFILEMENT_POWDER.toStack(), CorruptionCategory.CORRUPTION);
+        registration.addCraftingStation(CorruptionCategory.CORRUPTION, DLItems.DEFILEMENT_POWDER.toStack());
     }
 
     @Override
@@ -28,7 +28,6 @@ public class JEICompat implements IModPlugin {
 
     @Override
     public void registerRecipes(IRecipeRegistration registration) {
-        // registration.addRecipes(CorruptionCategory.CORRUPTION, new ArrayList<>(Collections.singleton(new CorruptionRecipe(Blocks.STONE, DLBlocks.DEFILED_STONE.get()))));
         registration.addRecipes(CorruptionCategory.CORRUPTION, RecipeViewerMap.getCorruptionRecipes().stream().map(info -> new CorruptionRecipe(info.getLeft(), info.getRight())).toList());
     }
 
