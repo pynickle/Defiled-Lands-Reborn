@@ -19,7 +19,7 @@ public class BookWyrmRenderer extends MobRenderer<BookWyrm, LivingEntityRenderSt
 
     @Override
     public LivingEntityRenderState createRenderState() {
-        return null;
+        return new LivingEntityRenderState();
     }
 
     @Override
