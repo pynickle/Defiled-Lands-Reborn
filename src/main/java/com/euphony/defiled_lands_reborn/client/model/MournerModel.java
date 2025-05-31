@@ -4,7 +4,6 @@ import com.euphony.defiled_lands_reborn.client.state.MournerRenderState;
 import com.euphony.defiled_lands_reborn.common.entity.boss.MournerBoss;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.model.geom.ModelPart;
-import org.jetbrains.annotations.NotNull;
 
 public class MournerModel extends HumanoidModel<MournerRenderState> {
     public MournerModel(ModelPart root) {

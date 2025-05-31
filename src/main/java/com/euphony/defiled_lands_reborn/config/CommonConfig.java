@@ -2,8 +2,6 @@ package com.euphony.defiled_lands_reborn.config;
 
 import net.neoforged.neoforge.common.ModConfigSpec;
 
-import java.util.List;
-
 public class CommonConfig {
     public static class General {
         public ModConfigSpec.BooleanValue enableCorruptionSpread;

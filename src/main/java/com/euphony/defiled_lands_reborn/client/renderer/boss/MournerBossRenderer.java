@@ -1,16 +1,12 @@
 package com.euphony.defiled_lands_reborn.client.renderer.boss;
 
-import com.euphony.defiled_lands_reborn.client.model.DestroyerModel;
 import com.euphony.defiled_lands_reborn.client.model.MournerModel;
-import com.euphony.defiled_lands_reborn.client.state.DestroyerRenderState;
 import com.euphony.defiled_lands_reborn.client.state.MournerRenderState;
-import com.euphony.defiled_lands_reborn.common.entity.boss.DestroyerBoss;
 import com.euphony.defiled_lands_reborn.common.entity.boss.MournerBoss;
 import com.euphony.defiled_lands_reborn.utils.Utils;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Axis;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.geom.ModelLayers;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
@@ -22,8 +18,6 @@ import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.ARGB;
 import net.minecraft.util.Mth;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Pose;
 import net.neoforged.neoforge.client.event.RenderLivingEvent;
 import net.neoforged.neoforge.common.NeoForge;

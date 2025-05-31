@@ -4,7 +4,6 @@ import com.euphony.defiled_lands_reborn.common.entity.Shambler;
 import com.euphony.defiled_lands_reborn.utils.Utils;
 import net.minecraft.client.model.EndermanModel;
 import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.renderer.entity.EndermanRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.client.renderer.entity.state.EndermanRenderState;

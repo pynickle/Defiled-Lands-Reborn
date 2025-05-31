@@ -21,7 +21,6 @@ import net.minecraft.world.item.component.TooltipDisplay;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
 
-import java.util.List;
 import java.util.function.Consumer;
 
 public class UmbraBlasterItem extends GunItem implements IEnchantDestructive {

@@ -6,7 +6,6 @@ import net.minecraft.client.model.ZombieModel;
 import net.minecraft.client.model.geom.ModelLayers;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.HumanoidMobRenderer;
-import net.minecraft.client.renderer.entity.ZombieRenderer;
 import net.minecraft.client.renderer.entity.layers.HumanoidArmorLayer;
 import net.minecraft.client.renderer.entity.state.ZombieRenderState;
 import net.minecraft.resources.ResourceLocation;

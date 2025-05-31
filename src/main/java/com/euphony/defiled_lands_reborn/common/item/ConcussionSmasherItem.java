@@ -15,7 +15,6 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.component.TooltipDisplay;
 import net.minecraft.world.level.Level;
 
-import java.util.List;
 import java.util.function.Consumer;
 
 public class ConcussionSmasherItem extends Item implements IEnchantDestructive {

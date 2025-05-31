@@ -1,7 +1,6 @@
 package com.euphony.defiled_lands_reborn;
 
 import com.euphony.defiled_lands_reborn.common.init.*;
-import com.euphony.defiled_lands_reborn.common.item.armor.DLArmorMaterials;
 import com.euphony.defiled_lands_reborn.common.worldgen.DLRegion;
 import com.euphony.defiled_lands_reborn.common.worldgen.DLSurfaceRuleData;
 import com.euphony.defiled_lands_reborn.config.ConfigHolder;

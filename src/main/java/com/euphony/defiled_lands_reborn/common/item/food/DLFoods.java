@@ -1,9 +1,6 @@
 package com.euphony.defiled_lands_reborn.common.item.food;
 
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
-import net.minecraft.world.item.Items;
 
 public class DLFoods {
     public static final FoodProperties SCUTTLER_EYE = (new FoodProperties.Builder()).nutrition(2).saturationModifier(0.8F).alwaysEdible().build();

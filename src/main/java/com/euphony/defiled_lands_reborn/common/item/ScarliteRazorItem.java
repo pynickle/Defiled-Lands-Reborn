@@ -19,7 +19,6 @@ import net.minecraft.world.item.component.ItemAttributeModifiers;
 import net.minecraft.world.item.component.TooltipDisplay;
 import net.minecraft.world.level.Level;
 
-import java.util.List;
 import java.util.function.Consumer;
 
 public class ScarliteRazorItem extends Item {

@@ -7,8 +7,6 @@ import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 
-import javax.swing.text.html.HTML;
-
 public class DLItemTags {
     public static final TagKey<Item> FOOD_POISONING = createCTag("foods/food_poisoning");
     public static final TagKey<Item> FOODS = createCTag("foods");
