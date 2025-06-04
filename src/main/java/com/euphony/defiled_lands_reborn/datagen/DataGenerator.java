@@ -38,6 +38,8 @@ public class DataGenerator {
 
         generator.addProvider(true, new DataMapGenerator(output, lookupProvider));
 
+        generator.addProvider(true, new ModelGenerator(output));
+
         // generator.addProvider(true, new LootTableGenerator(output, lookupProvider));
 
         generator.addProvider(true, new PackMetadataGenerator(output).add(PackMetadataSection.TYPE, new PackMetadataSection(
