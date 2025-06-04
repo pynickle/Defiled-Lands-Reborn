@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "defiled_lands_reborn:item/umbrium_sword"
+  }
+}

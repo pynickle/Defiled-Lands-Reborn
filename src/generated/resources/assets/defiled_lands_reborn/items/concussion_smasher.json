@@ -1,0 +1,42 @@
+{
+  "model": {
+    "type": "minecraft:range_dispatch",
+    "entries": [
+      {
+        "model": {
+          "type": "minecraft:model",
+          "model": "defiled_lands_reborn:item/concussion_smasher_pulling_0"
+        },
+        "threshold": 0.2
+      },
+      {
+        "model": {
+          "type": "minecraft:model",
+          "model": "defiled_lands_reborn:item/concussion_smasher_pulling_1"
+        },
+        "threshold": 0.4
+      },
+      {
+        "model": {
+          "type": "minecraft:model",
+          "model": "defiled_lands_reborn:item/concussion_smasher_pulling_2"
+        },
+        "threshold": 0.6
+      },
+      {
+        "model": {
+          "type": "minecraft:model",
+          "model": "defiled_lands_reborn:item/concussion_smasher_pulling_3"
+        },
+        "threshold": 0.8
+      }
+    ],
+    "fallback": {
+      "type": "minecraft:model",
+      "model": "defiled_lands_reborn:item/concussion_smasher"
+    },
+    "period": 10.0,
+    "property": "minecraft:use_cycle",
+    "scale": 0.1
+  }
+}

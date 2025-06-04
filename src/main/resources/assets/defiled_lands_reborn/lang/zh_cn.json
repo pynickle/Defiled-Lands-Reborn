@@ -118,11 +118,11 @@
   "item.defiled_lands_reborn.phytoprostasia_amulet": "邪恶植物护符",
   "item.defiled_lands_reborn.phytoprostasia_amulet.tooltip": "抵抗邪恶荆棘的伤害和加速爆炸植物的成熟",
 
-  "enchantment.sharpshooter": "狙击手",
-  "enchantment.economical": "经济",
-  "enchantment.safeguard": "安全",
-  "enchantment.destructive": "爆裂",
-  "enchantment.blazing": "烈焰",
+  "enchantment.defiled_lands_reborn.sharpshooter": "狙击手",
+  "enchantment.defiled_lands_reborn.economical": "经济",
+  "enchantment.defiled_lands_reborn.safeguard": "安全",
+  "enchantment.defiled_lands_reborn.destructive": "爆裂",
+  "enchantment.defiled_lands_reborn.blazing": "烈焰",
 
   "enchantment.defiled_lands_reborn.destructive.desc": "增加爆炸范围和爆炸伤害",
   "enchantment.defiled_lands_reborn.safeguard.desc": "爆炸不再破坏方块",
