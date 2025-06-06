@@ -1,8 +1,0 @@
-{
-  "parent": "defiled_lands_reborn:block/altar_base",
-  "textures": {
-    "bottom": "defiled_lands_reborn:block/defiled_stone",
-    "top": "defiled_lands_reborn:block/conjuring_altar_top_active",
-    "side": "defiled_lands_reborn:block/conjuring_altar_side_active"
-  }
-}

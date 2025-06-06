@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "defiled_lands_reborn:block/scarlite_block"
+  }
+}

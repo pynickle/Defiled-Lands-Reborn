@@ -1,6 +1,7 @@
 {
   "type": "minecraft:crafting_shaped",
   "category": "building",
+  "group": "wooden_stairs",
   "key": {
     "#": "defiled_lands_reborn:tenebra_planks"
   },
@@ -10,7 +11,7 @@
     "###"
   ],
   "result": {
-    "count": 1,
+    "count": 4,
     "id": "defiled_lands_reborn:tenebra_stairs"
   }
 }

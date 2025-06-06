@@ -1,8 +1,0 @@
-{
-  "parent": "block/door_bottom_right",
-  "render_type": "cutout",
-  "textures": {
-    "bottom": "defiled_lands_reborn:block/tenebra_door_bottom",
-    "top": "defiled_lands_reborn:block/tenebra_door_top"
-  }
-}

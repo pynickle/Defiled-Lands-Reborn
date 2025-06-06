@@ -1,6 +1,6 @@
 {
   "model": {
     "type": "minecraft:model",
-    "model": "defiled_lands_reborn:block/tenebra_door"
+    "model": "defiled_lands_reborn:item/tenebra_door"
   }
 }

@@ -1,6 +1,7 @@
 {
   "type": "minecraft:crafting_shaped",
   "category": "building",
+  "group": "wooden_slab",
   "key": {
     "#": "defiled_lands_reborn:tenebra_planks"
   },
@@ -8,7 +9,7 @@
     "###"
   ],
   "result": {
-    "count": 1,
+    "count": 6,
     "id": "defiled_lands_reborn:tenebra_slab"
   }
 }

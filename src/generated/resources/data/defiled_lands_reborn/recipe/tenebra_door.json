@@ -1,6 +1,7 @@
 {
   "type": "minecraft:crafting_shaped",
   "category": "redstone",
+  "group": "wooden_door",
   "key": {
     "#": "defiled_lands_reborn:tenebra_planks"
   },
@@ -10,7 +11,7 @@
     "##"
   ],
   "result": {
-    "count": 1,
+    "count": 3,
     "id": "defiled_lands_reborn:tenebra_door"
   }
 }

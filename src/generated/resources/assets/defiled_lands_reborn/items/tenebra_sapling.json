@@ -1,6 +1,6 @@
 {
   "model": {
     "type": "minecraft:model",
-    "model": "defiled_lands_reborn:block/tenebra_sapling"
+    "model": "defiled_lands_reborn:item/tenebra_sapling"
   }
 }

@@ -1,6 +1,0 @@
-{
-  "parent": "block/cube_all",
-  "textures": {
-    "all": "defiled_lands_reborn:block/umbrium_ore"
-  }
-}

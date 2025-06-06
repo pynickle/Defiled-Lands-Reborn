@@ -9,6 +9,7 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -34,6 +35,7 @@ public class RecipeGenerator extends RecipeProvider {
         addEquipmentRecipes();
         addMiscRecipes();
         addSmeltingRecipes();
+        DLBlockFamilies.getAllFamilies().forEach(family -> this.generateRecipes(family, FeatureFlags.DEFAULT_FLAGS));
     }
 
     public static class Runner extends RecipeProvider.Runner {
@@ -63,63 +65,6 @@ public class RecipeGenerator extends RecipeProvider {
         ShapelessRecipeBuilder.shapeless(registry, RecipeCategory.BUILDING_BLOCKS, DLBlocks.TENEBRA_PLANKS, 4)
                 .requires(DLBlocks.TENEBRA_LOG)
                 .unlockedBy("has_item", has(DLBlocks.TENEBRA_LOG))
-                .save(output);
-        ShapedRecipeBuilder.shaped(registry, RecipeCategory.BUILDING_BLOCKS, DLBlocks.TENEBRA_SLAB)
-                .pattern("###")
-                .define('#', DLBlocks.TENEBRA_PLANKS.asItem())
-                .unlockedBy("has_item", has(DLBlocks.TENEBRA_PLANKS))
-                .save(output);
-        ShapedRecipeBuilder.shaped(registry, RecipeCategory.BUILDING_BLOCKS, DLBlocks.TENEBRA_STAIRS)
-                .pattern("#  ")
-                .pattern("## ")
-                .pattern("###")
-                .define('#', DLBlocks.TENEBRA_PLANKS.asItem())
-                .unlockedBy("has_item", has(DLBlocks.TENEBRA_PLANKS))
-                .save(output);
-        ShapedRecipeBuilder.shaped(registry, RecipeCategory.REDSTONE, DLBlocks.TENEBRA_DOOR)
-                .pattern("##")
-                .pattern("##")
-                .pattern("##")
-                .define('#', DLBlocks.TENEBRA_PLANKS.asItem())
-                .unlockedBy("has_item", has(DLBlocks.TENEBRA_PLANKS))
-                .save(output);
-
-        ShapedRecipeBuilder.shaped(registry, RecipeCategory.BUILDING_BLOCKS, DLBlocks.DEFILED_SANDSTONE_SLAB)
-                .pattern("###")
-                .define('#', DLBlocks.DEFILED_SANDSTONE.asItem())
-                .unlockedBy("has_item", has(DLBlocks.DEFILED_SANDSTONE))
-                .save(output);
-        ShapedRecipeBuilder.shaped(registry, RecipeCategory.BUILDING_BLOCKS, DLBlocks.DEFILED_STONE_SLAB)
-                .pattern("###")
-                .define('#', DLBlocks.DEFILED_STONE.asItem())
-                .unlockedBy("has_item", has(DLBlocks.DEFILED_STONE))
-                .save(output);
-        ShapedRecipeBuilder.shaped(registry, RecipeCategory.BUILDING_BLOCKS, DLBlocks.DEFILED_STONE_BRICK_SLAB)
-                .pattern("###")
-                .define('#', DLBlocks.DEFILED_STONE_BRICKS)
-                .unlockedBy("has_item", has(DLBlocks.DEFILED_STONE_BRICKS))
-                .save(output);
-
-        ShapedRecipeBuilder.shaped(registry, RecipeCategory.BUILDING_BLOCKS, DLBlocks.DEFILED_STONE_STAIRS)
-                .pattern("#  ")
-                .pattern("## ")
-                .pattern("###")
-                .define('#', DLBlocks.DEFILED_STONE.asItem())
-                .unlockedBy("has_item", has(DLBlocks.DEFILED_STONE))
-                .save(output);
-        ShapedRecipeBuilder.shaped(registry, RecipeCategory.BUILDING_BLOCKS, DLBlocks.DEFILED_SANDSTONE_STAIRS)
-                .pattern("#  ")
-                .pattern("## ")
-                .pattern("###")
-                .define('#', DLBlocks.DEFILED_SANDSTONE.asItem())
-                .unlockedBy("has_item", has(DLBlocks.DEFILED_SANDSTONE))
-                .save(output);
-        ShapedRecipeBuilder.shaped(registry, RecipeCategory.BUILDING_BLOCKS, DLBlocks.DEFILED_STONE_BRICK_STAIRS)
-                .pattern("#  ")
-                .pattern("## ")
-                .pattern("###")
-                .define('#', DLBlocks.DEFILED_STONE_BRICKS)
-                .unlockedBy("has_item", has(DLBlocks.DEFILED_STONE_BRICKS))
                 .save(output);
 
         ShapedRecipeBuilder.shaped(registry, RecipeCategory.BUILDING_BLOCKS, DLBlocks.HEPHAESTITE_BLOCK)

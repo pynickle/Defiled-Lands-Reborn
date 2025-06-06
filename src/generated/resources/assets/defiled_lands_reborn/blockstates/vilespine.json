@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "topmost=false": {
+      "model": "defiled_lands_reborn:block/vilespine_part"
+    },
+    "topmost=true": {
+      "model": "defiled_lands_reborn:block/vilespine_top"
+    }
+  }
+}
