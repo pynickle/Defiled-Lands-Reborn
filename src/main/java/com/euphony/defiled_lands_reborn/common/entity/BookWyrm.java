@@ -41,6 +41,8 @@ import net.minecraft.world.item.enchantment.EnchantmentInstance;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.storage.ValueInput;
+import net.minecraft.world.level.storage.ValueOutput;
 import net.neoforged.neoforge.common.extensions.IHolderExtension;
 import org.jetbrains.annotations.Nullable;
 
@@ -204,7 +206,7 @@ public class BookWyrm extends Animal {
     }
 
     @Override
-    public void readAdditionalSaveData(CompoundTag compound) {
+    public void readAdditionalSaveData(ValueInput compound) {
         super.readAdditionalSaveData(compound);
         enchLevel = compound.getInt("EnchantingLevel").get();
         digestingTime = compound.getInt("DigestingTime").get();
@@ -214,7 +216,7 @@ public class BookWyrm extends Animal {
     }
 
     @Override
-    public void addAdditionalSaveData(CompoundTag compound) {
+    public void addAdditionalSaveData(ValueOutput compound) {
         super.addAdditionalSaveData(compound);
         compound.putInt("EnchantingLevel", enchLevel);
         compound.putInt("DigestingTime", digestingTime);

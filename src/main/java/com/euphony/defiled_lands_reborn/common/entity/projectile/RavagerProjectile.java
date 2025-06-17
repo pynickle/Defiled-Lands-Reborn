@@ -16,8 +16,12 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.projectile.AbstractHurtingProjectile;
 import net.minecraft.world.entity.projectile.ItemSupplier;
+import net.minecraft.world.entity.projectile.Projectile;
+import net.minecraft.world.item.ItemFrameItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.storage.ValueInput;
+import net.minecraft.world.level.storage.ValueOutput;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
@@ -84,14 +88,14 @@ public class RavagerProjectile extends AbstractHurtingProjectile implements Item
     }
 
     @Override
-    public void addAdditionalSaveData(CompoundTag compound) {
+    public void addAdditionalSaveData(ValueOutput compound) {
         super.addAdditionalSaveData(compound);
         compound.putFloat("Damage", damage);
 
         ItemStack itemstack = this.getItem();
 
         if (!itemstack.isEmpty()) {
-            compound.put("Item", itemstack.save(level().registryAccess()));
+            compound.store("Item", ItemStack.CODEC, itemstack);
             if(itemstack.isEmpty()) {
                 this.discard();
             } else {
@@ -101,9 +105,10 @@ public class RavagerProjectile extends AbstractHurtingProjectile implements Item
     }
 
     @Override
-    public void readAdditionalSaveData(CompoundTag compound) {
+    public void readAdditionalSaveData(ValueInput compound) {
         super.readAdditionalSaveData(compound);
-        damage = compound.getFloat("Damage").get();
+        damage = compound.getFloatOr("Damage", 12.0f);
+        setItem(compound.read("Item", ItemStack.CODEC).get());
     }
 
     @Override

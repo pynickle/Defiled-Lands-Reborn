@@ -32,7 +32,7 @@ public class DataGenerator {
 
         BlockTagGenerator blockTagGenerator = new BlockTagGenerator(output, lookupProvider);
         generator.addProvider(true, blockTagGenerator);
-        generator.addProvider(true, new ItemTagGenerator(output, lookupProvider, blockTagGenerator.contentsGetter()));
+        generator.addProvider(true, new ItemTagGenerator(output, lookupProvider));
 
         generator.addProvider(true, new RecipeGenerator.Runner(output, lookupProvider));
 
@@ -44,7 +44,7 @@ public class DataGenerator {
 
         generator.addProvider(true, new PackMetadataGenerator(output).add(PackMetadataSection.TYPE, new PackMetadataSection(
                 Component.literal("Resources for Defiled Lands Reborn"),
-                DetectedVersion.BUILT_IN.getPackVersion(PackType.SERVER_DATA),
+                DetectedVersion.BUILT_IN.packVersion(PackType.SERVER_DATA),
                 Optional.empty())));
     }
 }

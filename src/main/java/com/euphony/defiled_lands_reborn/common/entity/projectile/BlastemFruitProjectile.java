@@ -10,6 +10,8 @@ import net.minecraft.world.entity.projectile.ThrowableItemProjectile;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.storage.ValueInput;
+import net.minecraft.world.level.storage.ValueOutput;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
@@ -86,7 +88,7 @@ public class BlastemFruitProjectile extends ThrowableItemProjectile implements I
     }
 
     @Override
-    public void addAdditionalSaveData(CompoundTag compound) {
+    public void addAdditionalSaveData(ValueOutput compound) {
         super.addAdditionalSaveData(compound);
         compound.putFloat("Damage", damage);
         compound.putFloat("Explosion", explosion);
@@ -94,10 +96,10 @@ public class BlastemFruitProjectile extends ThrowableItemProjectile implements I
     }
 
     @Override
-    public void readAdditionalSaveData(CompoundTag compound) {
+    public void readAdditionalSaveData(ValueInput compound) {
         super.readAdditionalSaveData(compound);
-        this.damage = compound.getFloat("Damage").get();
-        this.explosion = compound.getFloat("Explosion").get();
-        this.destructive = compound.getBoolean("Destructive").get();
+        this.damage = compound.getFloatOr("Damage", 7.0f);
+        this.explosion = compound.getFloatOr("Explosion", 1.0f);
+        this.destructive = compound.getBooleanOr("Destructive", true);
     }
 }
