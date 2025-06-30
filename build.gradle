@@ -45,12 +45,10 @@ neoForge {
 
     version = project.neo_version
 
-    /*
     parchment {
         mappingsVersion = project.parchment_mappings_version
         minecraftVersion = project.parchment_minecraft_version
     }
-    */
 
     runs {
         client {
@@ -99,10 +97,10 @@ dependencies {
     compileOnlyApi("top.theillusivec4.curios:curios-neoforge:${curios_version}:api")
     runtimeOnly("top.theillusivec4.curios:curios-neoforge:${curios_version}")
 
+     */
     runtimeOnly("maven.modrinth:jade:${jade_version}")
-    */
 
-    // implementation("com.github.glitchfiend:TerraBlender-neoforge:${minecraft_version}-${terrablender_version}")
+    implementation("com.github.glitchfiend:TerraBlender-neoforge:${minecraft_version}-${terrablender_version}")
 }
 
 
