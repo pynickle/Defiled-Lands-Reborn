@@ -2,7 +2,7 @@ plugins {
     id 'java-library'
     id 'maven-publish'
     id 'idea'
-    id 'net.neoforged.moddev' version '2.0.88'
+    id 'net.neoforged.moddev' version '2.0.105'
 }
 
 version = mod_version
@@ -89,15 +89,15 @@ sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 
 dependencies {
-    /*
-    compileOnlyApi("mezz.jei:jei-${minecraft_version}-neoforge-api:${jei_version}")
-    runtimeOnly("mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}")
+    compileOnlyApi("mezz.jei:jei-1.21.7-neoforge-api:${jei_version}")
+    runtimeOnly("mezz.jei:jei-1.21.7-neoforge:${jei_version}")
 
+    /*
     implementation("top.theillusivec4.curios:curios-neoforge:${curios_version}")
     compileOnlyApi("top.theillusivec4.curios:curios-neoforge:${curios_version}:api")
     runtimeOnly("top.theillusivec4.curios:curios-neoforge:${curios_version}")
+    */
 
-     */
     runtimeOnly("maven.modrinth:jade:${jade_version}")
 
     implementation("com.github.glitchfiend:TerraBlender-neoforge:${minecraft_version}-${terrablender_version}")
