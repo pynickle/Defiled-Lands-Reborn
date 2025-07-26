@@ -15,7 +15,11 @@
     "umbrium": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
-        "items": ["defiled_lands_reborn:umbrium_ingot"]
+        "items": [
+          {
+            "items": "defiled_lands_reborn:umbrium_ingot"
+          }
+        ]
       }
     }
   }

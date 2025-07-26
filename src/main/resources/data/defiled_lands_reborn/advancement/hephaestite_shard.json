@@ -16,7 +16,9 @@
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
-          "defiled_lands_reborn:hephaestite_shard"
+          {
+            "items": "defiled_lands_reborn:hephaestite_shard"
+          }
         ]
       }
     }

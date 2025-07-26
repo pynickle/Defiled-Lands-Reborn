@@ -16,25 +16,41 @@
     "ravaging_pickaxe": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
-        "items": ["defiled_lands_reborn:ravaging_pickaxe"]
+        "items": [
+          {
+            "items": "defiled_lands_reborn:ravaging_pickaxe"
+          }
+        ]
       }
     },
     "ravaging_shovel": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
-        "items": ["defiled_lands_reborn:ravaging_shovel"]
+        "items": [
+          {
+            "items": "defiled_lands_reborn:ravaging_shovel"
+          }
+        ]
       }
     },
     "ravaging_axe": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
-        "items": ["defiled_lands_reborn:ravaging_axe"]
+        "items": [
+          {
+            "items": "defiled_lands_reborn:ravaging_axe"
+          }
+        ]
       }
     },
     "the_ravager": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
-        "items": ["defiled_lands_reborn:the_ravager"]
+        "items": [
+          {
+            "items": "defiled_lands_reborn:the_ravager"
+          }
+        ]
       }
     }
   },

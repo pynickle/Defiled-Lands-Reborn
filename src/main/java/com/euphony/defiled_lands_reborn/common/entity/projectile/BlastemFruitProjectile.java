@@ -2,7 +2,6 @@ package com.euphony.defiled_lands_reborn.common.entity.projectile;
 
 import com.euphony.defiled_lands_reborn.common.init.DLEntities;
 import com.euphony.defiled_lands_reborn.common.init.DLItems;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.projectile.ItemSupplier;
