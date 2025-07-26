@@ -25,7 +25,7 @@ import java.util.List;
 
 import static com.euphony.defiled_lands_reborn.utils.ItemUtils.addTooltip;
 
-@EventBusSubscriber(modid = DefiledLandsReborn.MOD_ID, bus = EventBusSubscriber.Bus.GAME)
+@EventBusSubscriber(modid = DefiledLandsReborn.MOD_ID)
 public class DLVanillaEvents {
     @SubscribeEvent
     public static void registerTooltip(ItemTooltipEvent event){

@@ -85,8 +85,10 @@ public class Shambler extends Monster {
         }
 
         if (level.isDay() && level.canSeeSky(getOnPos().above()) && random.nextFloat() < 0.02f) {
-            this.die(new DamageSource(registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(DamageTypes.GENERIC)));
-            this.setHealth(0.0f);
+            if(!this.dead) {
+                this.setHealth(0.0f);
+                this.die(new DamageSource(registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(DamageTypes.GENERIC)));
+            }
         }
         super.tick();
     }

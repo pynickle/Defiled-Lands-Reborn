@@ -17,7 +17,7 @@
       "conditions": {
         "items": [
           {
-            "item": "defiled_lands_reborn:blazing_blastem_fruit"
+            "items": "defiled_lands_reborn:blazing_blastem_fruit"
           }
         ]
       }

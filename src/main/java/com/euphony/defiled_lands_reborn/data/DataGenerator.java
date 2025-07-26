@@ -19,7 +19,7 @@ import net.neoforged.neoforge.data.event.GatherDataEvent;
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 
-@EventBusSubscriber(modid = DefiledLandsReborn.MOD_ID, bus = EventBusSubscriber.Bus.MOD)
+@EventBusSubscriber(modid = DefiledLandsReborn.MOD_ID)
 public class DataGenerator {
     @SubscribeEvent
     public static void generate(GatherDataEvent event) {
